@@ -288,6 +288,7 @@ def main():
     standard_activity_roll(tool_id)
 
 
+os.makedirs("logs", exist_ok=True)
 log_file = os.path.join("logs", constants.LOG_FILE_NAME)
 
 item_positions = gen_item_positions()
