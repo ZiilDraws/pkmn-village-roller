@@ -125,51 +125,6 @@ def find_tool_column(header_id):
     return find_column(constants.TOOL_HEADERS[header_id])
 
 
-# Perform a standard activity roll
-def standard_activity_roll(tool_id):
-    loot_table = WeightedTable(f"rolls/{constants.TOOL_FILE_NAMES[tool_id]}")
-    tool_column = find_tool_column(tool_id)
-    selected_id = 0
-    while selected_id != "end":
-        print("")
-        selected_id = input("Input Discord ID to roll (\"end\" to quit): ")
-        if selected_id == "end":
-            return
-        member_row = get_member_row(selected_id)
-        if member_row is not None:
-            tool_tier = constants.TOOLS_TIER.index(member_row[tool_column].lower())
-            if tool_tier == 0:
-                print(f"{member_row[nick_column]} has no {constants.TOOL_IDS[tool_id]}!")
-            else:
-                amount, item, sheet_num, pos = loot_roll(loot_table, tool_tier)
-                if sheet_num is None:
-                    print(f"Cannot find {item}!!! MAKE SURE TO ADD MANUALLY")
-                    continue
-                elif sheet_num == "n":
-                    print(f"Oof, no item :(")
-                    if write_misses_to_file:
-                        log_addition(member_row)
-                    continue
-                elif sheet_num == "r":
-                    amount, item, sheet_num, pos = loot_roll(loot_table, 4)
-                elif sheet_num == "er":
-                    amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
-                print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]} \
-{constants.TOOL_IDS[tool_id]}!")
-                if check_if_update_sheet():
-                    new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
-                                                                        member_row[sheet_link_column],
-                                                                        standard_prefix(item)
-                                                                        )
-                    log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
-                else:
-                    log_addition(member_row, item, amount, "Autoadd Disabled")
-                print("")
-                print(generate_tool_loot_message(member_row[nick_column], amount, item, tool_id))
-        else:
-            print(f"Could not find ID {selected_id}")
-
-
 def standard_prefix(item):
     if item.lower() in constants.VALUES_WITHOUT_X_PREFIX:
         return ""
@@ -276,6 +231,51 @@ def split_string_with_number(string):
         return 1, string
 
 
+# Perform a standard activity roll
+def standard_activity_roll(tool_id):
+    loot_table = WeightedTable(f"rolls/{constants.TOOL_FILE_NAMES[tool_id]}")
+    tool_column = find_tool_column(tool_id)
+    selected_id = 0
+    while selected_id != "end":
+        print("")
+        selected_id = input("Input Discord ID to roll (\"end\" to quit): ")
+        if selected_id == "end":
+            return
+        member_row = get_member_row(selected_id)
+        if member_row is not None:
+            tool_tier = constants.TOOLS_TIER.index(member_row[tool_column].lower())
+            if tool_tier == 0:
+                print(f"{member_row[nick_column]} has no {constants.TOOL_IDS[tool_id]}!")
+            else:
+                amount, item, sheet_num, pos = loot_roll(loot_table, tool_tier)
+                if sheet_num is None:
+                    print(f"\033[91m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY \033[0m")
+                    continue
+                elif sheet_num == "n":
+                    print(f"Oof, no item :(")
+                    if write_misses_to_file:
+                        log_addition(member_row)
+                    continue
+                elif sheet_num == "r":
+                    amount, item, sheet_num, pos = loot_roll(loot_table, 4)
+                elif sheet_num == "er":
+                    amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+                print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]} \
+{constants.TOOL_IDS[tool_id]}!")
+                if check_if_update_sheet():
+                    new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                        member_row[sheet_link_column],
+                                                                        standard_prefix(item)
+                                                                        )
+                    log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+                else:
+                    log_addition(member_row, item, amount, "Autoadd Disabled")
+                print("")
+                print(generate_tool_loot_message(member_row[nick_column], amount, item, tool_id))
+        else:
+            print(f"Could not find ID {selected_id}")
+
+
 def add_item_loop():
     selected_id = 0
     while selected_id != "end":
@@ -288,7 +288,7 @@ def add_item_loop():
             item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
             sheet_num, pos = find_position_of_item(item)
             if sheet_num is None:
-                print(f"Cannot find {item}!!")
+                print(f"\033[91mCannot find {item}!! \033[0m")
                 print(member_row[sheet_link_column])
                 continue
             amount = input(f"Input amount of {item}: ")
