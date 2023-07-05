@@ -1,1 +1,0 @@
-"%~dp0venv\Scripts\python.exe" main.py
