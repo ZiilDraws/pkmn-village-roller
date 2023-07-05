@@ -137,7 +137,7 @@ def standard_activity_roll(tool_id):
     selected_id = 0
     while selected_id != "end":
         print("")
-        selected_id = input("Input Discord ID to roll: ")
+        selected_id = input("Input Discord ID to roll (\"end\" to quit): ")
         if selected_id == "end":
             return
         member_row = get_member_row(selected_id)
@@ -182,8 +182,8 @@ def standard_prefix(item):
     return "x"
 
 
-def check_if_update_sheet():
-    if not auto_deny_updating_sheet:
+def check_if_update_sheet(deny_override=False):
+    if not auto_deny_updating_sheet or deny_override:
         if auto_add_to_inventory or input("Do you want to update sheet? y/n").strip() == "y":
             return True
     return False
@@ -282,10 +282,72 @@ def split_string_with_number(string):
         return 1, string
 
 
-def main():
-    tool_id = get_tool_id()
+def add_item_loop():
+    selected_id = 0
+    while selected_id != "end":
+        print("")
+        selected_id = input("Input Discord ID to add item to (\"end\" to quit): ")
+        if selected_id == "end":
+            return
+        member_row = get_member_row(selected_id)
+        if member_row is not None:
+            item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
+            sheet_num, pos = find_position_of_item(item)
+            if sheet_num is None:
+                print(f"Cannot find {item}!!")
+                print(member_row[sheet_link_column])
+                continue
+            amount = input(f"Input amount of {item}: ")
+            if not amount.isdigit():
+                print(f"{amount} is not an integer.")
+                print(member_row[sheet_link_column])
+            if check_if_update_sheet(True):
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                    member_row[sheet_link_column],
+                                                                    standard_prefix(item)
+                                                                    )
+                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+        else:
+            print(f"Could not find ID {selected_id}")
 
-    standard_activity_roll(tool_id)
+
+def link_loop():
+    selected_id = 0
+    while selected_id != "end":
+        print("")
+        selected_id = input("Input Discord ID to get URL (\"end\" to quit): ")
+        if selected_id == "end":
+            return
+        member_row = get_member_row(selected_id)
+        if member_row is not None:
+            print(f"{member_row[nick_column]}'s URL is {member_row[sheet_link_column]}")
+        else:
+            print(f"Could not find ID {selected_id}")
+
+
+def main():
+    end = False
+    while not end:
+        option = input("""What do you wish to do? 
+            -- type one of the following options
+            -- "tool" for standard tool activity rolls
+            -- "add" to add items to specific inventories
+            -- "link" to get sheet URL 
+            -- "end" to end program
+            """)
+        if option == "tool":
+            tool_id = get_tool_id()
+            standard_activity_roll(tool_id)
+        elif option == "add":
+            add_item_loop()
+        elif option == "link":
+            link_loop()
+        elif option == "end":
+            end = True
+        else:
+            print(f"{option} is not a valid option")
+    print("Good Bye!")
+
 
 
 os.makedirs("logs", exist_ok=True)
