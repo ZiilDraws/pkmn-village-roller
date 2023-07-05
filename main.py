@@ -8,6 +8,11 @@ import configparser
 from oauth2client.service_account import ServiceAccountCredentials
 from pyphonetics import Soundex
 
+if getattr(sys, 'frozen', False):
+    Current_Path = os.path.dirname(sys.executable)
+else:
+    Current_Path = str(os.path.dirname(__file__))
+
 # Authenticate using credentials
 scope = ["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive"]
@@ -31,7 +36,7 @@ class WeightedTable:
         self.load_tables(filename)
 
     def load_tables(self, filename):
-        with open(filename, 'r') as file:
+        with open(os.path.join(Current_Path, filename), 'r') as file:
             current_table = []
 
             for line in file:
@@ -79,7 +84,7 @@ def replace_placeholders(template, replacements):
 
 
 def gen_item_positions():
-    with open(constants.POSITIONS_FILE, 'r', encoding='utf-8') as f:
+    with open(os.path.join(Current_Path, constants.POSITIONS_FILE), 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
     positions = []
@@ -148,7 +153,7 @@ def generate_tool_loot_message(name, amount, item, tool_id):
 
 
 def read_random_line(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(os.path.join(Current_Path, file_path), 'r', encoding='utf-8') as file:
         lines = file.readlines()
         random_line = random.choice(lines).strip()
         return random_line
@@ -189,12 +194,12 @@ def log_addition(member_row, item="None", amount=0, old_val=0, new_val=0, positi
 def write_to_log(line):
     try:
         # Check if the file exists
-        with open(log_file, 'a') as file:
+        with open(os.path.join(Current_Path, log_file), 'a') as file:
             # Append the new line to the log file
             file.write(line.__str__() + '\n')
     except FileNotFoundError:
         # Create the file if it doesn't exist
-        with open(log_file, 'w') as file:
+        with open(os.path.join(Current_Path, log_file), 'w') as file:
             pass
         write_to_log(line)
 
@@ -249,7 +254,7 @@ def standard_activity_roll(tool_id):
             else:
                 amount, item, sheet_num, pos = loot_roll(loot_table, tool_tier)
                 if sheet_num is None:
-                    print(f"\033[91m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY \033[0m")
+                    print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
                     continue
                 elif sheet_num == "n":
                     print(f"Oof, no item :(")
@@ -288,7 +293,7 @@ def add_item_loop():
             item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
             sheet_num, pos = find_position_of_item(item)
             if sheet_num is None:
-                print(f"\033[91mCannot find {item}!! \033[0m")
+                print(f"Cannot find {item}!")
                 print(member_row[sheet_link_column])
                 continue
             amount = input(f"Input amount of {item}: ")
