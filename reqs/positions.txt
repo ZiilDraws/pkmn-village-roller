@@ -1,6 +1,7 @@
 none, n, 0
 Money, 0, E3
-money, 0, E3
+GCTokens, 0, H3
+GCT, 0, H3
 Megastone, er, 1
 Z Crystal, er, 2
 GMax Star, er, 3

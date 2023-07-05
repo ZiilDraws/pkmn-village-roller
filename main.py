@@ -94,7 +94,7 @@ def gen_item_positions():
         if not line or line.startswith('#'):
             continue
         parts = line.split(',')
-        name = parts[0]
+        name = parts[0].lower()
         w_sheet = parts[1].strip()
         pos = parts[2].strip()
         positions.append([name, w_sheet, pos])
@@ -131,7 +131,7 @@ def find_tool_column(header_id):
 
 
 # Perform a standard activity roll
-def standard_activity_roll(tool_id, auto_add=False):
+def standard_activity_roll(tool_id):
     loot_table = WeightedTable(f"rolls/{constants.TOOL_FILE_NAMES[tool_id]}")
     tool_column = find_tool_column(tool_id)
     selected_id = 0
@@ -162,21 +162,34 @@ def standard_activity_roll(tool_id, auto_add=False):
                 print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]} \
 {constants.TOOL_IDS[tool_id]}!")
                 print(member_row[sheet_link_column])
-                if auto_add or not auto_deny_updating_sheet and input(
-                        "Do you want to update sheet? y/n").strip() == "y":
+                if check_if_update_sheet():
                     new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                         member_row[sheet_link_column],
-                                                                        "x" if item.lower() != "money" else "")
+                                                                        standard_prefix(item)
+                                                                        )
                     log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
                 else:
                     log_addition(member_row, item, amount, "Autoadd Disabled")
                 print("")
-                print(generate_loot_message(member_row[nick_column], amount, item, tool_id))
+                print(generate_tool_loot_message(member_row[nick_column], amount, item, tool_id))
         else:
             print(f"Could not find ID {selected_id}")
 
 
-def generate_loot_message(name, amount, item, tool_id):
+def standard_prefix(item):
+    if item.lower() in constants.VALUES_WITHOUT_X_PREFIX:
+        return ""
+    return "x"
+
+
+def check_if_update_sheet():
+    if not auto_deny_updating_sheet:
+        if auto_add_to_inventory or input("Do you want to update sheet? y/n").strip() == "y":
+            return True
+    return False
+
+
+def generate_tool_loot_message(name, amount, item, tool_id):
     if amount == 1:
         amount = get_article(item)
     line = read_random_line(os.path.join("prompts", constants.TOOL_FILE_NAMES[tool_id]))
@@ -205,9 +218,9 @@ def change_value_of_cell(dx_value, worksheet_id, position, url, prefix="x"):
     old_value = member_worksheet.acell(position).value
     value = False
     if old_value is not None:
-        value = re.match(r'^(x?)(\d+)$', old_value)
+        value = re.match(r'^(x?)(\d+(,\d+)*)$', old_value)
     if value:
-        new_value = int(value.group(2)) + dx_value
+        new_value = int(value.group(2).replace(",", "")) + dx_value
         cell_value = f"{prefix}{new_value}"
         member_worksheet.update_acell(position, cell_value)
         return cell_value, old_value, member_worksheet.title
@@ -238,8 +251,8 @@ def write_to_log(line):
 
 
 def find_position_of_item(item_name):
-    for index, item in enumerate(item_positions):
-        if item[0] == item_name:
+    for item in item_positions:
+        if item[0] == item_name.lower():
             return item[1], item[2]
     return None, None
 
@@ -272,7 +285,7 @@ def split_string_with_number(string):
 def main():
     tool_id = get_tool_id()
 
-    standard_activity_roll(tool_id, auto_add_to_inventory)
+    standard_activity_roll(tool_id)
 
 
 log_file = os.path.join("logs", constants.LOG_FILE_NAME)

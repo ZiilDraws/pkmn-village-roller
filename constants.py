@@ -20,7 +20,7 @@ MASTERSHEET_HEADERS = [
     "Boosting Server?"
 ]
 
-POSITIONS_FILE = "rolls/positions.txt"
+POSITIONS_FILE = "reqs/positions.txt"
 
 TOOL_IDS = ("bug net", "fishing rod", "shovel", "slingshot", "wailmer pail")
 TOOLS_TIER = ("none", "basic", "silver", "golden")
@@ -31,3 +31,5 @@ TOOL_FILE_NAMES = ("bug.txt", "fish.txt", "dig.txt", "shoot.txt")
 EXTRA_FILE_NAME = "rolls/extra_rolls.txt"
 
 MISS_LABEL = "none"
+
+VALUES_WITHOUT_X_PREFIX = ["money", "pokedollar", "pokedollars", "poke", "gctoken", "gctokens"]
