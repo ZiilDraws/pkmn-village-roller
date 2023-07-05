@@ -1,0 +1,120 @@
+Venusaurite^0.1
+Charizardite X^0.1
+Charizardite Y^0.1
+Blastoisite^0.1
+Alakazite^0.1
+Gengarite^0.1
+Kangaskhanite^0.1
+Pinsirite^0.1
+Gyaradosite^0.1
+Aerodactylite^0.1
+Mewtwonite X^0.1
+Mewtwonite Y^0.1
+Ampharosite^0.1
+Scizorite^0.1
+Heracronite^0.1
+Houndoominite^0.1
+Tyranitarite^0.1
+Blazikenite^0.1
+Gardefoirite^0.1
+Mawilite^0.1
+Aggronite^0.1
+Medichamite^0.1
+Manectite^0.1
+Banettite^0.1
+Absolite^0.1
+Latiasite^0.1
+Garchompite^0.1
+Lucarionite^0.1
+Abomasite^0.1
+Beedrillite^0.1
+Pidgeotite^0.1
+Slowbronite^0.1
+Steelixite^0.1
+Sceptilite^0.1
+Swampertite^0.1
+Sablenite^0.1
+Sharpedonite^0.1
+Cameruptite^0.1
+Altarianite^0.1
+Glalitite^0.1
+Salamencite^0.1
+Metagrossite^0.1
+Green Orb^0.1
+Lopunnite^0.1
+Galladite^0.1
+Audinite^0.1
+Diancite^0.1
+Red Orb^0.1
+Blue Orb^0.1
+DNA Splicers^0.1
+Ultra Prism^0.1
+
+Snorlax Star^0.1
+Charizard Star^0.1
+Pikachu Star^0.1
+Eevee Star^0.1
+Butterfree Star^0.1
+Meowth Star^0.1
+Corviknight Star^0.1
+Alcremie Star^0.1
+Drednaw Star^0.1
+Machamp Star^0.1
+Gengar Star^0.1
+Toxtricity Star^0.1
+Melmetal Star^0.1
+Coalossal Star^0.1
+Sandaconda Star^0.1
+Centiskorch Star^0.1
+Grimmsnarl Star^0.1
+Hatterene Star^0.1
+Copperajah Star^0.1
+Duraludon Star^0.1
+Flapple Star^0.1
+Appletun Star^0.1
+Orbeetle Star^0.1
+Garbodor Star^0.1
+Kingler Star^0.1
+Lapras Star^0.1
+Inteleon Star^0.1
+Cinderace Star^0.1
+Rillaboom Star^0.1
+Urshifu Star^0.1
+Venusaur Star^0.1
+Blastoise Star^0.1
+
+Buginium Z
+Darkinium Z
+Dragonium Z
+Electrium Z
+Fairium Z
+Fightinium Z
+Firium Z
+Flyinium Z
+Ghostium Z
+Grassium Z
+Grounium Z
+Icium Z
+Normalium Z
+Poisonium Z
+Psychium Z
+Rockium Z
+Steelium Z
+Waterium Z
+Alorachium Z
+Decidium Z
+Eevium Z
+Incinium Z
+Kommonium Z
+Lunalium Z
+Lycanium Z
+Marshadium Z
+Mewnium Z
+Mimikium Z
+Pikanium Z
+Pikashunium Z
+Primarium Z
+Snorlium Z
+Solganium Z
+Tapunium Z
+Ultranecrozium Z

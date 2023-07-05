@@ -1,0 +1,135 @@
+Oops, you missed!^8
+1 money^4
+10 money^3
+100 money^2
+1,000 money^0.1
+Basic Ticket
+Elemental Ticket
+Personalized Ticket
+Ticket Re-roll
+Delta Shard
+Tour Extension
+TM
+Gender-Swap Stone
+Form-Change Stone
+Evolution Stone
+Devolution Pebble
+Rare Candy (5MG)
+Rare Candy (10MG)^0.8
+Rare Candy (15MG)^0.5
+Hybrid Berry
+Delta Berry
+Shiny Berry
+Mutant Berry
+Clutch Re-roll
+Clutch Forecast^0.5
+Substitute Doll^0.5
+x3 Cosmo Seeds
+x3 Hyacinth Seeds
+x3 Lily Seeds
+x3 Mum Seeds
+x3 Pansy Seeds
+x3 Rose Seeds
+x3 Tulip Seeds
+x3 Windflower Seeds
+
+Oops, you missed!^4
+10 money^2
+100 money
+500 money^0.5
+Basic Ticket^2
+Elemental Ticket^2
+Personalized Ticket ^0.5
+Ticket Re-roll^2
+TM^2
+Gender-Swap Stone^2
+Form-Change Stone^2
+Evolution Stone^2
+Devolution Pebble^2
+Rare Candy (5MG)^2
+Rare Candy (10MG)^0.8
+Rare Candy (15MG)^0.5
+Legendary Ticket
+Hybrid Wand^0.3
+Legendary Hybrid Wand^0.5
+Swap Wand^0.5
+Exchange Wand^0.5
+Delta Shard
+Tour Extension
+HM
+Experimental Wand^0.5
+Delta Wand^0.5
+Mutant Wand^0.5
+Shiny Wand^0.5
+Reset Wand
+Odd Wand
+Megastone^0.5
+GMax Star^0.5
+Z Crystal^0.5
+Hybrid Berry
+Delta Berry
+Shiny Berry
+Mutant Berry
+Clutch Re-roll
+Clutch Forecast^0.8
+Substitute Doll^0.8
+x3 Cosmo Seeds
+x3 Hyacinth Seeds
+x3 Lily Seeds
+x3 Mum Seeds
+x3 Pansy Seeds
+x3 Rose Seeds
+x3 Tulip Seeds
+x3 Windflower Seeds
+Magic-Infused Stone^0.3
+Magic-Infused Stick^0.3
+
+10 money^0.5
+100 money^6
+1000 money
+Basic Ticket
+Elemental Ticket^2
+Personalized Ticket^2
+Ticket Re-roll^2
+TM^2
+Gender-Swap Stone^2
+Form-Change Stone^2
+Evolution Stone^2
+Devolution Pebble^2
+Rare Candy (5MG)^2
+Rare Candy (10MG)
+Rare Candy (15MG)
+Delta Shard
+Tour Extension
+Legendary Ticket
+Hybrid Wand
+Swap Wand
+Exchange Wand
+HM
+Experimental Wand
+Legendary Hybrid Wand
+Delta Wand
+Mutant Wand
+Shiny Wand
+Reset Wand
+Odd Wand
+Hybrid Berry
+Delta Berry
+Shiny Berry
+Mutant Berry
+Clutch Re-roll
+Clutch Forecast
+Substitute Doll
+Megastone
+Z Crystal
+GMax Star
+x3 Cosmo Seed^0.3
+x3 Hyacinth Seed^0.3
+x3 Lily Seed^0.3
+x3 Mum Seed^0.3
+x3 Pansy Seed^0.3
+x3 Rose Seed^0.3
+x3 Tulip Seed^0.3
+x3 Windflower Seed^0.3
+Magic-Infused Stone
+Magic-Infused Stick

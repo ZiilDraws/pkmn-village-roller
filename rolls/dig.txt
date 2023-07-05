@@ -1,0 +1,143 @@
+none^5
+Fossil ^2
+Gyroid Fragment
+Gender-Swap Stone
+Form-Change Stone
+Evolution Stone
+Devolution Pebble
+x3 Weeds
+x2 Weeds
+x1 Weed
+x3 Manila Clams
+x2 Manila Clams
+x1 Manila Clam
+Ant
+Mole Cricket
+Hermit Crab
+Pill Bug
+1 money
+10 money
+50 money
+100 money ^0.4
+
+none
+Fossil ^5
+Gyroid Fragment ^2
+Gender-Swap Stone
+Form-Change Stone
+Evolution Stone
+Devolution Pebble
+x3 Weeds
+x2 Weeds
+x1 Weed
+x3 Manila Clams
+x2 Manila Clams
+x1 Manila Clam
+Ant
+Mole Cricket
+Hermit Crab
+Pill Bug
+Megastone ^0.5
+GMax Star ^0.5
+Z-Crystal ^0.5
+50 money
+100 money
+200 money ^0.5
+500 money ^0.2
+Magic-Infused Stone^0.3
+Magic-Infused Stick^0.3
+
+Fossil ^10
+Gyroid Fragment ^5
+Gender-Swap Stone
+Form-Change Stone
+Evolution Stone
+Devolution Pebble
+x3 Weeds ^0.8
+x3 Manila Clams ^0.8
+Ant
+Mole Cricket
+Hermit Crab
+Pill Bug
+Megastone
+GMax Star
+Z-Crystal
+50 money
+100 money
+200 money
+500 money ^0.8
+Magic-Infused Stone^0.3
+Magic-Infused Stick^0.3
+
+Acanthostega
+Amber
+Ammonite
+Ankylosaurus Skull
+Ankylosaurus Torso
+Ankylosaurus Tail
+Anomalocaris
+Archaeopteryx
+Archelon Skull
+Archelon Tail
+Australopith
+Brachio Skull
+Brachio Chest
+Brachio Pelvis
+Brachio Tail
+Coprolite
+Deinony Skull
+Deinony Torso
+Deinony Tail
+Dinosaur Track
+Diplo Skull
+Diplo Neck
+Diplo Chest
+Diplo Pelvis
+Diplo Tail
+Diplo Tail Tip
+Dunkleosteus
+Eusthenopteron
+Iguanadon Skull
+Iguanadon Torso
+Iguanadon Tail
+Juramaia
+Mammoth Skull
+Mammoth Torso
+Megacero Skull
+Megacero Torso
+Megacero Tail
+Megalo Left Side
+Megalo Right Side
+Myllokunmingia
+Ophthalmo Skull
+Opthalmo Torso
+Pachy Skull
+Pachy Tail
+Parasaur Skull
+Parasaur Torso
+Parasaur Tail
+Plesio Skull
+Plesio Neck
+Plesio Torso
+Ptera Body
+Ptera Left Wing
+Ptera Right Wing
+Quetzal Torso
+Quetzal Left Wing
+Quetzal Right Wing
+Sabertooth Skull
+Sabertooth Tail
+Shark-Tooth Pattern
+Spino Skull
+Spino Torso
+Spino Tail
+Stego Skull
+Stego Torso
+Stego Tail
+T. Rex Skull
+T. Rex Torso
+T. Rex Tail
+Tricera Skull
+Tricera Torso
+Tricera Tail
+Trilobite

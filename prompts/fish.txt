@@ -1,0 +1,25 @@
+Well done, {name}! Your fishing skills are exceptional. You've reeled in {amount} {item}. Keep up the great work!
+Congratulations on your fishing success, {name}! Enjoy {amount} {item} as a reward for your angling prowess.
+Great catch, {name}! You've snagged {amount} {item} with your impressive fishing skills.
+Your efforts paid off, {name}! Accept {amount} {item} as a token of appreciation for your fishing expertise.
+Splendid work, {name}! {amount} {item} are now yours, a testament to your mastery of the fishing rod.
+Impressive fishing, {name}! You've hauled in {amount} {item} with your skillful angling.
+Bravo! {amount} {item} are awarded to you, {name}, for your outstanding fishing performance.
+Well played, {name}! {amount} {item} are now in your possession, a result of your successful fishing endeavors.
+Excellent job, {name}! Enjoy {amount} {item} as a well-deserved reward for your fishing prowess.
+Amazing work, {name}! Your fishing skills are top-notch. You've caught {amount} {item} with ease.
+Whoa, {name}! You fished like a Magikarp on caffeine and caught {amount} {item}! That's a splash-tastic achievement!
+Holy Mackerel, {name}! Your fishing skills are off the hook! You've reeled in {amount} {item}. Time to make a splash in the pond!
+Fisherman {name}! You've evolved into a master angler! Your tackle box is overflowing with {amount} {item}.
+Bobber down, {name}! You've caught {amount} {item} with a confused expression. It's a quacky achievement that even Pikachu would applaud!
+Fishy-fishy, {name}! Your fishing skills are as sharp as a Seaking's horn. Rejoice, for you've caught {amount} {item} with a surprising splash attack!
+Hey, {name}! You cast your line like a Poliwag in a spinning frenzy and caught {amount} {item}. That's a watery spectacle!
+Reeling it in, {name}! Your fishing rod has become a Lure Ball, attracting {amount} {item} with its sparkling charm. You've got a shimmering collection!
+Fisherman {name}, you've unlocked the ultimate fishing power! With your trusty rod, you've snagged {amount} {item}.
+Abracadabra, {name}! Your fishing skills are like a Magician Gyarados. You've conjured up {amount} {item} from thin air! Keep the magic flowing!
+Hey, {name}! You've discovered a secret fishing spot where {amount} {item} is fooling around. Watch out for their mischievous tricks!
+Fisherman {name}, you've caught {amount} {item}, and they're making a big splash in the ocean. Get ready for some whale-sized adventures!
+Look what you've hooked, {name}! You reeled in {amount} {item} taking a leisurely swim. Slow and steady wins the fish-catching race!
+Yo, {name}! You're a fishing ninja! With stealth and precision, you snagged {amount} {item}, ready to conquer any challenge!
+Holy Tentacool, {name}! You've caught {amount} {item} in a mighty battle of fishing prowess. Now you're the ruler of the sea!
+Fisherman {name}, you're a master of surprises! You've caught {amount} {item}, transforming your fishing adventure into a wild and whimsical journey!

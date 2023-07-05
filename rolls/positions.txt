@@ -1,0 +1,517 @@
+none, n, 0
+Money, 0, E3
+money, 0, E3
+Megastone, er, 1
+Z Crystal, er, 2
+GMax Star, er, 3
+Fossil, r, 4
+Basic Ticket, 0, C9
+Elemental Ticket, 0, C10
+Personalized Ticket, 0, C11
+Ticket Re-roll, 0, C12
+Legendary Ticket, 0, C14
+Prize Ticket, 0, C15
+Limitless Ticket, 0, C16
+Tour Extension, 0, C18
+Hybrid Wand, 0, C21
+Delta Wand, 0, C22
+Mutant Wand, 0, C23
+Shiny Wand, 0, C24
+Legendary Hybrid Wand, 0, C26
+Reset Wand, 0, C27
+Odd Wand, 0, C28
+Swap Wand, 0, C29
+Exchange Wand, 0, C30
+Experimental Wand, 0, C31
+Gender-Swap Stone, 0, F9
+Form-Change Stone, 0, F10
+Evolution Stone, 0, F11
+Devolution Pebble, 0, F12
+Rare Candy (5MG), 0, F14
+Rare Candy (10MG), 0, F15
+Rare Candy (15MG), 0, F16
+TM, 0, F18
+HM, 0, F19
+Shiny Berry, 0, F21
+Mutant Berry, 0, F22
+Hybrid Berry, 0, F23
+Delta Berry, 0, F24
+Delta Shard, 0, F25
+Clutch Re-roll, 0, F27
+Clutch Forecast, 0, F28
+Substitute Doll, 0, F29
+Cosmos Seeds, 0, I9
+Hyacinth Seeds, 0, I10
+Lily Seeds, 0, I11
+Mum Seeds, 0, I12
+Pansy Seeds, 0, I13
+Rose Seeds, 0, I14
+Tulip Seeds, 0, I15
+Windflower Seeds, 0, I16
+Apples, 0, I18
+Cherries, 0, I19
+Coconuts, 0, I20
+Peaches, 0, I21
+Pears, 0, I22
+Oranges, 0, I23
+Weeds, 0, I24
+Cosmos Seed, 0, I9
+Hyacinth Seed, 0, I10
+Lily Seed, 0, I11
+Mum Seed, 0, I12
+Pansy Seed, 0, I13
+Rose Seed, 0, I14
+Tulip Seed, 0, I15
+Windflower Seed, 0, I16
+Apple, 0, I18
+Cherry, 0, I19
+Coconut, 0, I20
+Peach, 0, I21
+Pear, 0, I22
+Orange, 0, I23
+Weed, 0, I24
+Manila Clam, 0, I25
+Gyroid Fragment, 0, I26
+Mulch, 0, I27
+Fish Bait, 0, I28
+Insect Bait, 0, I29
+Magic-Infused Stick, 0, I30
+Magic-Infused Stone, 0, I31
+Abomasite, 0, C34
+Absolite, 0, C35
+Aerodactylite, 0, C36
+Aggronite, 0, C37
+Alakazite, 0, C38
+Altarianite, 0, C39
+Ampharosite, 0, C40
+Audinite, 0, C41
+Banettite, 0, C42
+Beedrillite, 0, C43
+Blastoisinite, 0, C44
+Blazikenite, 0, C45
+Blue Orb, 0, C46
+Cameruptite, 0, C47
+Charizardite X, 0, C48
+Charizardite Y, 0, C49
+Diancite, 0, C50
+DNA Splicers, 0, C51
+Galladitite, 0, C52
+Garchompite, 0, C53
+Gardevoirite, 0, C54
+Gengarite, 0, C55
+Glalitite, 0, C56
+Green Orb, 0, C57
+Gyaradosite, 0, C58
+Heracronite, 0, C59
+Houndoominite, 0, C60
+Kangaskhanite, 0, C61
+Latiasite, 0, C62
+Latiosite, 0, C63
+Lopunnite, 0, C64
+Lucarionite, 0, C65
+Manectite, 0, C66
+Mawilite, 0, C67
+Medichamite, 0, C68
+Metagrossite, 0, C69
+Mewtwonite X, 0, C70
+Mewtwonite Y, 0, C71
+Pidgeotite, 0, C72
+Pinsirite, 0, C73
+Red Orb, 0, C74
+Sablenite, 0, C75
+Salamencite, 0, C76
+Sceptilite, 0, C77
+Scizorite, 0, C78
+Sharpedonite, 0, C79
+Slowbronite, 0, C80
+Steelixite, 0, C81
+Swampertite, 0, C82
+Tyranitarite, 0, C83
+Ultra Prism, 0, C84
+Venusaurite, 0, C85
+Alcremie Star, 0, F34
+Appletun Star, 0, F35
+Blastoise Star, 0, F36
+Butterfree Star, 0, F37
+Centiskorch Star, 0, F38
+Charizard Star, 0, F39
+Cinderace Star, 0, F40
+Coalossal Star, 0, F41
+Copperajah Star, 0, F42
+Corviknight Star, 0, F43
+Drednaw Star, 0, F44
+Duraludon Star, 0, F45
+Eevee Star, 0, F46
+Flapple Star, 0, F47
+Garbodor Star, 0, F48
+Gengar Star, 0, F49
+Grimmsnarl Star, 0, F50
+Hatterene Star, 0, F51
+Inteleon Star, 0, F52
+Kingler Star, 0, F53
+Lapras Star, 0, F54
+Machamp Star, 0, F55
+Melmetal Star, 0, F56
+Meowth Star, 0, F57
+Orbeetle Star, 0, F58
+Pikachu Star, 0, F59
+Rillaboom Star, 0, F60
+Sandaconda Star, 0, F61
+Snorlax Star, 0, F62
+Toxtricity Star, 0, F63
+Urshifu Star, 0, F64
+Venusaur Star, 0, F65
+Aloraichium Z, 0, I34
+Buginium Z, 0, I35
+Decidium Z, 0, I36
+Dragonium Z, 0, I37
+Eevium Z, 0, I38
+Electrium Z, 0, I39
+Fairium Z, 0, I40
+Fightinium Z, 0, I41
+Firium Z, 0, I42
+Flyinium Z, 0, I43
+Ghostium Z, 0, I44
+Grassium Z, 0, I45
+Groundium Z, 0, I46
+Icium Z, 0, I47
+Incinium Z, 0, I48
+Kommonium Z, 0, I49
+Lunalium Z, 0, I50
+Lycanium Z, 0, I51
+Marshadium Z, 0, I52
+Mewnium Z, 0, I53
+Mimikium Z, 0, I54
+Normalium Z, 0, I55
+Pikanium Z, 0, I56
+Pikashunium Z, 0, I57
+Poisonium Z, 0, I58
+Primarium Z, 0, I59
+Psychium Z, 0, I60
+Rockium Z, 0, I61
+Snorlium Z, 0, I62
+Solganium Z, 0, I63
+Steelium Z, 0, I64
+Tapunium Z, 0, I65
+Ultranecrozium Z, 0, I66
+Waterium Z, 0, I67
+Agrias Butterfly, 2, C9
+Ant, 2, C10
+Atlas Moth, 2, C11
+Bagworm, 2, C12
+Banded Dragonfly, 2, C13
+Bell Cricket, 2, C14
+Blue Weevil Beetle, 2, C15
+Brown Cicada, 2, C16
+Centipede, 2, C17
+Cicada Shell, 2, C18
+Citrus Long-horned Beetle, 2, C19
+Common Bluebottle, 2, C20
+Common Butterfly, 2, C21
+Cricket, 2, C22
+Cyclommatus Stag, 2, C23
+Damselfly, 2, C24
+Darner Dragonfly, 2, C25
+Diving Beetle, 2, C26
+Drone Beetle, 2, C27
+Dung Beetle, 2, C28
+Earth-boring Dung Beetle, 2, C29
+Emperor Butterfly, 2, C30
+Evening Cicada, 2, C31
+Firefly, 2, C32
+Flea, 2, C33
+Fly, 2, C34
+Giant Cicada, 2, C35
+Giant Stag, 2, C36
+Giant Water Bug, 2, C37
+Giraffe Stag, 2, C38
+Golden Stag, 2, C39
+Goliath Beetle, 2, C40
+Grasshopper, 2, C41
+Great Purple Emperor, 2, C42
+Hermit Crab, 2, C43
+Honeybee, 2, C44
+Horned Atlas, 2, C45
+Horned Dynastid, 2, C46
+Horned Elephant, 2, C47
+Horned Hercules, 2, C48
+Jewel Beetle, 2, C49
+Lady Bug, 2, C50
+Long Locust, 2, C51
+Madagascan Sunset Moth, 2, C52
+Man-Faced Stink Bug, 2, C53
+Mantis, 2, C54
+Migratory Locust, 2, C55
+Miyama Stag, 2, C56
+Mole Cricket, 2, C57
+Monarch Butterfly, 2, C58
+Mosquito, 2, C59
+Moth, 2, C60
+Orchid Mantis, 2, C61
+Paper Kite Butterfly, 2, C62
+Peacock Butterfly, 2, C63
+Pill Bug, 2, C64
+Pondskater, 2, C65
+Queen Alexandria's Birdwing, 2, C66
+Rainbow Stag, 2, C67
+Rajah Brooke's Birdwing, 2, C68
+Red Dragonfly, 2, C69
+Rice Grasshopper, 2, C70
+Robust Cicada, 2, C71
+Rosalia Batesi Beetle, 2, C72
+Saw Stag, 2, C73
+Scarab Beetle, 2, C74
+Scorpion, 2, C75
+Snail, 2, C76
+Spider, 2, C77
+Stinkbug, 2, C78
+Tarantula, 2, C79
+Tiger Beetle, 2, C80
+Tiger Butterfly, 2, C81
+Violin Beetle, 2, C82
+Walker Cicada, 2, C83
+Walking Leaf, 2, C84
+Walking Stick, 2, C85
+Wasp, 2, C86
+Wharf Roach, 2, C87
+Yellow Butterfly, 2, C88
+Anchovy, 2, F9
+Angelfish, 2, F10
+Arapaima, 2, F11
+Arowana, 2, F12
+Barred Knifejaw, 2, F13
+Barreleye, 2, F14
+Betta, 2, F15
+Bitterling, 2, F16
+Black Bass, 2, F17
+Blowfish, 2, F18
+Blue Marlin, 2, F19
+Bluegill, 2, F20
+Butterfly Fish, 2, F21
+Carp, 2, F22
+Catfish, 2, F23
+Char, 2, F24
+Cherry Salmon, 2, F25
+Clown Fish, 2, F26
+Coelacanth, 2, F27
+Crawfish, 2, F28
+Crucian Carp, 2, F29
+Dace, 2, F30
+Dap, 2, F31
+Dorado, 2, F32
+Football Fish, 2, F33
+Freshwater Goby, 2, F34
+Frog, 2, F35
+Gar, 2, F36
+Giant Snakehead, 2, F37
+Giant Trevally, 2, F38
+Golden Trout, 2, F39
+Goldfish, 2, F40
+Great White Shark, 2, F41
+Guppy, 2, F42
+Hammerhead Shark, 2, F43
+Horse Mackerel, 2, F44
+Killifish, 2, F45
+King Salmon, 2, F46
+Koi, 2, F47
+Loach, 2, F48
+Mahi-Mahi, 2, F49
+Mitten Crab, 2, F50
+Moray Eel, 2, F51
+Napoleonfish, 2, F52
+Neon Tetra, 2, F53
+Nibble Fish, 2, F54
+Oarfish, 2, F55
+Ocean Sunfish, 2, F56
+Olive Flounder, 2, F57
+Pale Chub, 2, F58
+Pike, 2, F59
+Piranha, 2, F60
+Pond Smelt, 2, F61
+Pop-eyed Goldfish, 2, F62
+Puffer Fish, 2, F63
+Rainbowfish, 2, F64
+Ranchu Goldfish, 2, F65
+Ray, 2, F66
+Red Snapper, 2, F67
+Ribbot Eel, 2, F68
+Saddled Bichir, 2, F69
+Salmon, 2, F70
+Saw Shark, 2, F71
+Sea Bass, 2, F72
+Sea Butterfly, 2, F73
+Sea Horse, 2, F74
+Snapping Turtle, 2, F75
+Soft-shelled Turtle, 2, F76
+Squid, 2, F77
+Stringfish, 2, F78
+Sturgeon, 2, F79
+Suckerfish, 2, F80
+Surgeonfish, 2, F81
+Sweetfish, 2, F82
+Tadpole, 2, F83
+Tilapia, 2, F84
+Tuna, 2, F85
+Whale Shark, 2, F86
+Yellow Perch, 2, F87
+Zebra Turkeyfish, 2, F88
+Acanthostega, 2, I9
+Amber, 2, I10
+Ammonite, 2, I11
+Ankylosaurus Skull, 2, I12
+Ankylosaurus Torso, 2, I13
+Ankylosaurus Tail, 2, I14
+Anomalocaris, 2, I15
+Archaeopteryx, 2, I16
+Archelon Skull, 2, I17
+Archelon Tail, 2, I18
+Australopith, 2, I19
+Brachio Skull, 2, I20
+Brachio Chest, 2, I21
+Brachio Pelvis, 2, I22
+Brachio Tail, 2, I23
+Coprolite, 2, I24
+Deinony Skull, 2, I25
+Deinony Torso, 2, I26
+Deinony Tail, 2, I27
+Dinosaur Track, 2, I28
+Diplo Skull, 2, I29
+Diplo Neck, 2, I30
+Diplo Chest, 2, I31
+Diplo Pelvis, 2, I32
+Diplo Tail, 2, I33
+Diplo Tail Tip, 2, I34
+Dunkleosteus, 2, I35
+Eusthenopteron, 2, I36
+Iguanadon Skull, 2, I37
+Iguanadon Torso, 2, I38
+Iguanadon Tail, 2, I39
+Juramaia, 2, I40
+Mammoth Skull, 2, I41
+Mammoth Torso, 2, I42
+Megacero Skull, 2, I43
+Megacero Torso, 2, I44
+Megacero Tail, 2, I45
+Megalo Left Side, 2, I46
+Megalo Right Side, 2, I47
+Myllokunmingia, 2, I48
+Ophthalmo Skull, 2, I49
+Opthalmo Torso, 2, I50
+Pachy Skull, 2, I51
+Pachy Tail, 2, I52
+Parasaur Skull, 2, I53
+Parasaur Torso, 2, I54
+Parasaur Tail, 2, I55
+Plesio Skull, 2, I56
+Plesio Neck, 2, I57
+Plesio Torso, 2, I58
+Ptera Body, 2, I59
+Ptera Left Wing, 2, I60
+Ptera Right Wing, 2, I61
+Quetzal Torso, 2, I62
+Quetzal Left Wing, 2, I63
+Quetzal Right Wing, 2, I64
+Sabertooth Skull, 2, I65
+Sabertooth Tail, 2, I66
+Shark-Tooth Pattern, 2, I67
+Spino Skull, 2, I68
+Spino Torso, 2, I69
+Spino Tail, 2, I70
+Stego Skull, 2, I71
+Stego Torso, 2, I72
+Stego Tail, 2, I73
+T. Rex Skull, 2, I74
+T. Rex Torso, 2, I75
+T. Rex Tail, 2, I76
+Tricera Skull, 2, I77
+Tricera Torso, 2, I78
+Tricera Tail, 2, I79
+Trilobite, 2, I80
+Cosmo (Black), 2, L9
+Cosmo (Orange), 2, L10
+Cosmo (Pink), 2, L11
+Cosmo (Red), 2, L12
+Cosmo (White), 2, L13
+Cosmo (Yellow), 2, L14
+Hyacinth (Blue), 2, L15
+Hyacinth (Orange), 2, L16
+Hyacinth (Pink), 2, L17
+Hyacinth (Purple), 2, L18
+Hyacinth (Red), 2, L19
+Hyacinth (White), 2, L20
+Hyacinth (Yellow), 2, L21
+Lily (Black), 2, L22
+Lily (Orange), 2, L23
+Lily (Pink), 2, L24
+Lily (Red), 2, L25
+Lily (White), 2, L26
+Lily (Yellow), 2, L27
+Mum (Green), 2, L28
+Mum (Pink), 2, L29
+Mum (Purple), 2, L30
+Mum (Red), 2, L31
+Mum (White), 2, L32
+Mum (Yellow), 2, L33
+Pansy (Blue), 2, L34
+Pansy (Orange), 2, L35
+Pansy (Purple), 2, L36
+Pansy (Red), 2, L37
+Pansy (White), 2, L38
+Pansy (Yellow), 2, L39
+Rose (Black), 2, L40
+Rose (Blue), 2, L41
+Rose (Orange), 2, L42
+Rose (Pink), 2, L43
+Rose (Purple), 2, L44
+Rose (Red), 2, L45
+Rose (White), 2, L46
+Rose (Yellow), 2, L47
+Tulip (Black), 2, L48
+Tulip (Orange), 2, L49
+Tulip (Pink), 2, L50
+Tulip (Purple), 2, L51
+Tulip (Red), 2, L52
+Tulip (White), 2, L53
+Tulip (Yellow), 2, L54
+Windflower (Blue), 2, L55
+Windflower (Orange), 2, L56
+Windflower (Pink), 2, L57
+Windflower (Purple), 2, L58
+Windflower (Red), 2, L59
+Windflower (White), 2, L60
+Aluminoid, 2, O9
+Arfoid, 2, O10
+Babbloid, 2, O11
+Bendoid, 2, O12
+Bloopoid, 2, O13
+Boioingoid, 2, O14
+Boomoid, 2, O15
+Brewstoid, 2, O16
+Bubbloid, 2, O17
+Bwongoid, 2, O18
+Clatteroid, 2, O19
+Crumploid, 2, O20
+Dootoid, 2, O21
+Drummoid, 2, O22
+Flutteroid, 2, O23
+Jingloid, 2, O24
+Laseroid, 2, O25
+Oinkoid, 2, O26
+Petaloid, 2, O27
+Rattloid, 2, O28
+Ringoid, 2, O29
+Rumbloid, 2, O30
+Scatteroid, 2, O31
+Spikenoid, 2, O32
+Sproingoid, 2, O33
+Squeakoid, 2, O34
+Squeezoid, 2, O35
+Stelloid, 2, O36
+Thwopoid, 2, O37
+Tockoid, 2, O38
+Tremoloid, 2, O39
+Twangoid, 2, O40
+Wallopoid, 2, O41
+Whirroid, 2, O42
+Whistloid, 2, O43
+Xylophoid, 2, O44
