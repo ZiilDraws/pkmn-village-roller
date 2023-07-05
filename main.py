@@ -4,14 +4,9 @@ import random
 import gspread
 import constants
 import re
+import configparser
 from oauth2client.service_account import ServiceAccountCredentials
 from pyphonetics import Soundex
-
-# Variables to set
-auto_add_to_inventory = False
-auto_deny_updating_sheet = False
-save_changes_done_to_file = True
-write_misses_to_file = True
 
 # Authenticate using credentials
 scope = ["https://spreadsheets.google.com/feeds",
@@ -348,7 +343,13 @@ def main():
             print(f"{option} is not a valid option")
     print("Good Bye!")
 
+config = configparser.ConfigParser()
+config.read('config.ini')
 
+auto_add_to_inventory = config.getboolean('Settings', 'auto_add_to_inventory')
+auto_deny_updating_sheet = config.getboolean('Settings', 'auto_deny_updating_sheet')
+save_changes_done_to_file = config.getboolean('Settings', 'save_changes_done_to_file')
+write_misses_to_file = config.getboolean('Settings', 'write_misses_to_file')
 
 os.makedirs("logs", exist_ok=True)
 log_file = os.path.join("logs", constants.LOG_FILE_NAME)
