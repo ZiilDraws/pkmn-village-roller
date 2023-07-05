@@ -156,7 +156,6 @@ def standard_activity_roll(tool_id):
                     amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
                 print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]} \
 {constants.TOOL_IDS[tool_id]}!")
-                print(member_row[sheet_link_column])
                 if check_if_update_sheet():
                     new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                         member_row[sheet_link_column],
