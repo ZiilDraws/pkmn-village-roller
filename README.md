@@ -6,6 +6,8 @@ Requires Google Service Account credentials with Google Sheets API access. Tutor
 Currently set up for the fake mastersheet. 
 
 
+## TUTORIAL TO SET UP SHEETS API ACCESS (REQUIRED)
+
 ### 1. Go to the Google Cloud Platform Console:
 Open your web browser and go to the Google Cloud Platform Console.
 
