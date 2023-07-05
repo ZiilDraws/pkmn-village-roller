@@ -138,7 +138,7 @@ def standard_prefix(item):
 
 def check_if_update_sheet(deny_override=False):
     if not auto_deny_updating_sheet or deny_override:
-        if auto_add_to_inventory or input("Do you want to update sheet? y/n").strip() == "y":
+        if auto_add_to_inventory or input("Do you want to update sheet? (y/n): ").strip() == "y":
             return True
     return False
 
