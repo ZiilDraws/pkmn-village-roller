@@ -33,3 +33,5 @@ EXTRA_FILE_NAME = "rolls/extra_rolls.txt"
 MISS_LABEL = "none"
 
 VALUES_WITHOUT_X_PREFIX = ["money", "pokedollar", "pokedollars", "poke", "gct", "gctoken", "gctokens"]
+
+GAMBLE_PROMPT_FILE_NAME = "gamble.txt"

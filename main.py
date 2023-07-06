@@ -144,9 +144,13 @@ def check_if_update_sheet(deny_override=False):
 
 
 def generate_tool_loot_message(name, amount, item, tool_id):
+    return generate_loot_message(name, amount, item, constants.TOOL_FILE_NAMES[tool_id])
+
+
+def generate_loot_message(name, amount, item, loot_file_name):
     if amount == 1:
         amount = get_article(item)
-    line = read_random_line(os.path.join("prompts", constants.TOOL_FILE_NAMES[tool_id]))
+    line = read_random_line(os.path.join("prompts", loot_file_name))
     replacements = {"name": name, "amount": amount, "item": item}
     edited_line = replace_placeholders(line, replacements)
     return edited_line
@@ -236,6 +240,29 @@ def split_string_with_number(string):
         return 1, string
 
 
+def process_list_of_ranges(input_string):
+    ranges = input_string.split(",")
+    result = []
+
+    for range_str in ranges:
+        range_values = range_str.split("-")
+        first_num = int(range_values[0].strip())
+        second_num = int(range_values[1].strip()) if len(range_values) > 1 else first_num
+        result.append((first_num, second_num))
+
+    return result
+
+
+def process_positive_negative_int(in_data):
+    if in_data.strip() == "":
+        return 0
+    match = re.match(r'^(-?)(\d+)$', in_data.strip())
+    if match:
+        return int(in_data)
+    else:
+        return False
+
+
 # Perform a standard activity roll
 def standard_activity_roll(tool_id):
     loot_table = WeightedTable(f"rolls/{constants.TOOL_FILE_NAMES[tool_id]}")
@@ -281,6 +308,44 @@ def standard_activity_roll(tool_id):
             print(f"Could not find ID {selected_id}")
 
 
+def dice_gamble_roll():
+    dice_max = config.getint("GameCorner", "standard_dice_max")
+    gamble_value_ranges = process_list_of_ranges(config.get("GameCorner", "dice_value_ranges"))
+    gamble_reward_ranges = process_list_of_ranges(config.get("GameCorner", "dice_reward_ranges"))
+    sheet_num, pos = find_position_of_item("gct")
+    selected_id = 0
+    while selected_id != "end":
+        print("")
+        selected_id = input("Input Discord ID of gamer (\"end\" to quit): ")
+        if selected_id == "end":
+            return
+        member_row = get_member_row(selected_id)
+        if member_row is not None:
+            modifier = process_positive_negative_int(input("Input modifier value: "))
+            if modifier != 0 and not modifier:
+                print(f"Input is not a digit")
+                continue
+            dice_roll = random.randint(1, dice_max)
+            dice_roll_mod = max(1, dice_roll + modifier)
+            reward = "ERROR"
+            for index, value_range in enumerate(gamble_value_ranges):
+                if value_range[0] <= dice_roll_mod <= value_range[1]:
+                    reward = random.randint(gamble_reward_ranges[index][0], gamble_reward_ranges[index][1])
+            print(f"{member_row[nick_column]} won {reward} GCT with a roll of {dice_roll_mod} ({dice_roll}+{modifier})")
+
+            if check_if_update_sheet(True) and reward != "ERROR":
+                new_val, old_val, sheet_name = change_value_of_cell(reward, int(sheet_num), pos,
+                                                                    member_row[sheet_link_column], "")
+                log_addition(member_row, "gct", reward, old_val, new_val, pos, sheet_name)
+            else:
+                log_addition(member_row, "gct", reward, "Autoadd Disabled")
+
+            print(generate_loot_message(member_row[nick_column], reward, "GCT", constants.GAMBLE_PROMPT_FILE_NAME))
+
+        else:
+            print(f"Could not find ID {selected_id}")
+
+
 def add_item_loop():
     selected_id = 0
     while selected_id != "end":
@@ -296,10 +361,11 @@ def add_item_loop():
                 print(f"Cannot find {item}!")
                 print(member_row[sheet_link_column])
                 continue
-            amount = input(f"Input amount of {item}: ")
-            if not amount.isdigit():
-                print(f"{amount} is not an integer.")
+            amount = process_positive_negative_int(input(f"Input amount of {item}: "))
+            if amount != 0 and not amount:
+                print(f"Input is not an integer.")
                 print(member_row[sheet_link_column])
+                continue
             if check_if_update_sheet(True):
                 new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                     member_row[sheet_link_column],
@@ -330,13 +396,16 @@ def main():
         option = input("""What do you wish to do? 
             -- type one of the following options
             -- "tool" for standard tool activity rolls
+            -- "gamble" for dice game corner roll with modifier
             -- "add" to add items to specific inventories
             -- "link" to get sheet URL 
             -- "end" to end program
-            """)
+            """).lower()
         if option == "tool":
             tool_id = get_tool_id()
             standard_activity_roll(tool_id)
+        elif option == "gamble":
+            dice_gamble_roll()
         elif option == "add":
             add_item_loop()
         elif option == "link":
