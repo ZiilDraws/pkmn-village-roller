@@ -1,3 +1,4 @@
+import json.decoder
 import os.path
 import sys
 import random
@@ -16,8 +17,15 @@ else:
 # Authenticate using credentials
 scope = ["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive"]
-credentials = ServiceAccountCredentials.from_json_keyfile_name(
-    'env/credentials.json', scope)
+
+try:
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        'env/credentials.json', scope)
+except:
+    print("An error with the credentials.json file in the env folder! Is it missing? Have you followed the tutorial "
+          "at https://github.com/ZiilDraws/pkmn-village-roller/blob/main/README.md?")
+    input("")
+    sys.exit(0)
 gc = gspread.authorize(credentials)
 
 # Open the spreadsheet by URL
@@ -415,6 +423,7 @@ def main():
         else:
             print(f"{option} is not a valid option")
     print("Good Bye!")
+
 
 config = configparser.ConfigParser()
 config.read('config.ini')
