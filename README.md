@@ -42,7 +42,9 @@ In the "Add Key/Create new key" section, select the JSON key type and click on t
 
 A JSON file containing your credentials will be downloaded to your computer.
 
-Rename this file to credentials.json and place it in a folder called "env" next to the files from this program.
+Rename this file to "credentials" and place it in a folder called "env" next to the files from this program.
+
+If you have file extensions enabled, make sure the credentials file stays as a .json
 
 ### 5. Share the Google Sheets folder:
 THIS IS ONLY NECCESSARY (and only possible) WHEN PROGRAM IS OUT OF PRE-RELEASE
