@@ -34,7 +34,7 @@ Enter a name for your service account and click on the "Create" button.
 
 Clock "Done", we do not use the optional options.
 
-Press your service account email. (e.g. pkmn-village@pkmn-village-123456.iam.gserviceaccount.com. This is the email you need for step 5, so make sure to copy it to somewhere for the time being)
+Press your service account email. (For example pkmn-village@pkmn-village-123456.iam.gserviceaccount.com. This is the email you need for step 5, so make sure to copy it to somewhere for the time being)
 
 Select "Keys"
 
@@ -42,7 +42,9 @@ In the "Add Key/Create new key" section, select the JSON key type and click on t
 
 A JSON file containing your credentials will be downloaded to your computer.
 
-Rename this file to credentials.json and place it in a folder called "env" next to the files from this program.
+Rename this file to "credentials" and place it in a folder called "env" next to the files from this program.
+
+If you have file extensions enabled, make sure the credentials file stays as a .json
 
 ### 5. Share the Google Sheets folder:
 THIS IS ONLY NECCESSARY (and only possible) WHEN PROGRAM IS OUT OF PRE-RELEASE
