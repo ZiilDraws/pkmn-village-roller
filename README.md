@@ -49,7 +49,7 @@ THIS IS ONLY NECCESSARY (and only possible) WHEN PROGRAM IS OUT OF PRE-RELEASE
 
 Open sharing for the Drive folder containing all member sheets.
 
-Enter the email address associated with the service account you created in step 4.
+Enter the email address associated with the service account you created in step 4. (If you have lost this one, you can find it at https://console.cloud.google.com/iam-admin/serviceaccounts)
 
 Set the access level for the service account to allow it to read or edit the document as desired.
 
