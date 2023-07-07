@@ -34,7 +34,7 @@ Enter a name for your service account and click on the "Create" button.
 
 Clock "Done", we do not use the optional options.
 
-Press your service account email. 
+Press your service account email. (This is the email you need for step 5, so make sure to copy it to somewhere for the time being)
 
 Select "Keys"
 
@@ -45,6 +45,8 @@ A JSON file containing your credentials will be downloaded to your computer.
 Rename this file to credentials.json and place it in a folder called "env" next to the files from this program.
 
 ### 5. Share the Google Sheets folder:
+THIS IS ONLY NECCESSARY (and only possible) WHEN PROGRAM IS OUT OF PRE-RELEASE
+
 Open sharing for the Drive folder containing all member sheets.
 
 Enter the email address associated with the service account you created in step 4.
