@@ -34,7 +34,7 @@ Enter a name for your service account and click on the "Create" button.
 
 Clock "Done", we do not use the optional options.
 
-Press your service account email. (This is the email you need for step 5, so make sure to copy it to somewhere for the time being)
+Press your service account email. (e.g. pkmn-village@pkmn-village-123456.iam.gserviceaccount.com. This is the email you need for step 5, so make sure to copy it to somewhere for the time being)
 
 Select "Keys"
 
