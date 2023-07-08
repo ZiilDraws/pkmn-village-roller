@@ -347,6 +347,7 @@ def dice_gamble_roll():
                 log_addition(member_row, "gct", reward, old_val, new_val, pos, sheet_name)
             else:
                 log_addition(member_row, "gct", reward, "Autoadd Disabled")
+                print(member_row[sheet_link_column])
 
             print(generate_loot_message(member_row[nick_column], reward, "GCT", constants.GAMBLE_PROMPT_FILE_NAME))
 
@@ -358,7 +359,7 @@ def add_item_loop():
     selected_id = 0
     while selected_id != "end":
         print("")
-        selected_id = input("Input Discord ID to add item to (\"end\" to quit): ")
+        selected_id = input("Input Discord ID to add/remove item (\"end\" to quit): ")
         if selected_id == "end":
             return
         member_row = get_member_row(selected_id)
@@ -369,7 +370,7 @@ def add_item_loop():
                 print(f"Cannot find {item}!")
                 print(member_row[sheet_link_column])
                 continue
-            amount = process_positive_negative_int(input(f"Input amount of {item}: "))
+            amount = process_positive_negative_int(input(f"Input amount of {item} (e.g. 5, 32 or -300): "))
             if amount != 0 and not amount:
                 print(f"Input is not an integer.")
                 print(member_row[sheet_link_column])
@@ -405,7 +406,7 @@ def main():
             -- type one of the following options
             -- "tool" for standard tool activity rolls
             -- "gamble" for dice game corner roll with modifier
-            -- "add" to add items to specific inventories
+            -- "modify" to add/remove items in specific inventories
             -- "link" to get sheet URL 
             -- "end" to end program
             """).lower()
@@ -414,7 +415,7 @@ def main():
             standard_activity_roll(tool_id)
         elif option == "gamble":
             dice_gamble_roll()
-        elif option == "add":
+        elif option == "modify" or option == "add" or option == "remove":
             add_item_loop()
         elif option == "link":
             link_loop()
