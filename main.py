@@ -178,10 +178,18 @@ def loot_roll(table, tier):
     return amount, item, sheet_num, pos
 
 
-def change_value_of_cell(dx_value, worksheet_id, position, url, prefix="x"):
+def change_value_of_cell(dx_value, worksheet_id, position, url, item):
     member_sheet = gc.open_by_url(url)
     member_worksheet = member_sheet.get_worksheet(worksheet_id)
     old_value = member_worksheet.acell(position).value
+    prefix = standard_prefix(item)
+    if prefix == "x":
+        item_cell = member_worksheet.acell(decrement_letter(position)).value
+        if item_cell.strip() != item.strip():
+            print(f"The cell to the left of this cell is {item_cell} instead of {item}.")
+            cont = input("Are you sure you wish to continue? (y/n): ")
+            if cont.lower() != "y":
+                return "Error in position label", old_value, None
     value = False
     if old_value is not None:
         value = re.match(r'^(x?)(\d+(,\d+)*)$', old_value)
@@ -271,6 +279,22 @@ def process_positive_negative_int(in_data):
         return False
 
 
+def decrement_letter(input_str):
+    letter = input_str[0]
+    number = input_str[1:]
+
+    # Decrement the letter by one step
+    if letter.isalpha():
+        letter = chr(ord(letter.upper()) - 1)
+
+        # Wrap around from 'A' to 'Z'
+        if letter < 'A':
+            letter = 'Z'
+
+    # Return the modified input
+    return letter + number
+
+
 # Perform a standard activity roll
 def standard_activity_roll(tool_id):
     loot_table = WeightedTable(f"rolls/{constants.TOOL_FILE_NAMES[tool_id]}")
@@ -305,7 +329,7 @@ def standard_activity_roll(tool_id):
                 if check_if_update_sheet():
                     new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                         member_row[sheet_link_column],
-                                                                        standard_prefix(item)
+                                                                        item
                                                                         )
                     log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
                 else:
@@ -343,7 +367,7 @@ def dice_gamble_roll():
 
             if check_if_update_sheet(True) and reward != "ERROR":
                 new_val, old_val, sheet_name = change_value_of_cell(reward, int(sheet_num), pos,
-                                                                    member_row[sheet_link_column], "")
+                                                                    member_row[sheet_link_column], "GCT")
                 log_addition(member_row, "gct", reward, old_val, new_val, pos, sheet_name)
             else:
                 log_addition(member_row, "gct", reward, "Autoadd Disabled")
@@ -378,7 +402,7 @@ def add_item_loop():
             if check_if_update_sheet(True):
                 new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                     member_row[sheet_link_column],
-                                                                    standard_prefix(item)
+                                                                    item
                                                                     )
                 log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
         else:
