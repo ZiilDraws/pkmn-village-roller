@@ -185,7 +185,7 @@ def change_value_of_cell(dx_value, worksheet_id, position, url, item):
     prefix = standard_prefix(item)
     if prefix == "x":
         item_cell = member_worksheet.acell(decrement_letter(position)).value
-        if item_cell.strip() != item.strip():
+        if item_cell.strip().lower() != item.strip().lower():
             print(f"The cell to the left of this cell is {item_cell} instead of {item}.")
             cont = input("Are you sure you wish to continue? (y/n): ")
             if cont.lower() != "y":
@@ -195,6 +195,9 @@ def change_value_of_cell(dx_value, worksheet_id, position, url, item):
         value = re.match(r'^(x?)(\d+(,\d+)*)$', old_value)
     if value:
         new_value = int(value.group(2).replace(",", "")) + dx_value
+        if new_value < 0:
+            print(f"This member does not have enough {item}, only {old_value}!")
+            return "Not enough for edit", old_value, None
         cell_value = f"{prefix}{new_value}"
         member_worksheet.update_acell(position, cell_value)
         return cell_value, old_value, member_worksheet.title
@@ -276,7 +279,7 @@ def process_positive_negative_int(in_data):
     if match:
         return int(in_data)
     else:
-        return False
+        return None
 
 
 def decrement_letter(input_str):
@@ -354,7 +357,7 @@ def dice_gamble_roll():
         member_row = get_member_row(selected_id)
         if member_row is not None:
             modifier = process_positive_negative_int(input("Input modifier value: "))
-            if modifier != 0 and not modifier:
+            if modifier is None:
                 print(f"Input is not a digit")
                 continue
             dice_roll = random.randint(1, dice_max)
@@ -395,8 +398,8 @@ def add_item_loop():
                 print(member_row[sheet_link_column])
                 continue
             amount = process_positive_negative_int(input(f"Input amount of {item} (e.g. 5, 32 or -300): "))
-            if amount != 0 and not amount:
-                print(f"Input is not an integer.")
+            if amount is None or amount == 0:
+                print(f"Input is 0 or not an integer.")
                 print(member_row[sheet_link_column])
                 continue
             if check_if_update_sheet(True):
