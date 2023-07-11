@@ -2,6 +2,8 @@ from datetime import datetime
 
 LOG_FILE_NAME = log_file_name = datetime.now().strftime("added_%H_%M_%d_%m_%Y.log")
 
+# Test Mastersheet https://docs.google.com/spreadsheets/d/1-ptD2YT_NjTY2AAi5yqBbDkcy7-Om54JHNoujwQVl2g/edit#gid=1947086225
+# Real Mastersheet https://docs.google.com/spreadsheets/d/14-y_966nX3GxakL5YF7YhTp-94hVFT5samJ6Pdxfxh8/edit#gid=1947086225
 MASTERSHEET_URL = "https://docs.google.com/spreadsheets/d/1-ptD2YT_NjTY2AAi5yqBbDkcy7-Om54JHNoujwQVl2g/edit#gid=1947086225"
 MASTERSHEET_WORKSHEET_ID = 1947086225
 MASTERSHEET_HEADERS = [
