@@ -1,4 +1,3 @@
-import json.decoder
 import os.path
 import sys
 import random
@@ -64,7 +63,7 @@ class WeightedTable:
             if current_table:  # Add the last table if not empty
                 self.tables.append(current_table)
 
-    def roll(self, table_index):
+    def roll(self, table_index=1):
         if table_index < 1 or table_index > len(self.tables):
             raise IndexError("Invalid table index")
 
@@ -171,7 +170,7 @@ def read_random_line(file_path):
         return random_line
 
 
-def loot_roll(table, tier):
+def loot_roll(table, tier=1):
     result = table.roll(tier)
     amount, item = split_string_with_number(result)
     sheet_num, pos = find_position_of_item(item)
@@ -298,9 +297,35 @@ def decrement_letter(input_str):
     return letter + number
 
 
+def get_txt_files(folder):
+    txt_files = []
+    for file in os.listdir(os.path.join(Current_Path, folder)):
+        if file.endswith(".txt"):
+            txt_files.append(file)
+    return txt_files
+
+
+def get_item_roll_file(txt_files):
+    while True:
+        print("Available files:")
+        for i, file in enumerate(txt_files):
+            print(f"{i + 1}. {file[:-4]}")
+        selection = input("Enter the number of the file you want to select (0 to exit): ")
+
+        if selection.isdigit():
+            selection = int(selection)
+            if 0 < selection <= len(txt_files):
+                return txt_files[selection - 1]
+            elif selection == 0:
+                return None
+
+        print("Invalid selection. Please try again.")
+
+
 # Perform a standard activity roll
 def standard_activity_roll(tool_id):
-    loot_table = WeightedTable(f"rolls/{constants.TOOL_FILE_NAMES[tool_id]}")
+    loot_table = WeightedTable(f"rolls/tools/{constants.TOOL_FILE_NAMES[tool_id]}")
+    extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
     tool_column = find_tool_column(tool_id)
     selected_id = 0
     while selected_id != "end":
@@ -382,6 +407,87 @@ def dice_gamble_roll():
             print(f"Could not find ID {selected_id}")
 
 
+def item_loot_roll():
+    extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
+    selected_id = "end"
+    txt_files = get_txt_files(constants.ITEM_LOOT_ROLL_FOLDER)
+    selected_file = get_item_roll_file(txt_files)
+    if selected_file is not None:
+        selected_id = 0
+        loot_table = WeightedTable(os.path.join(constants.ITEM_LOOT_ROLL_FOLDER, selected_file))
+    while selected_id != "end":
+        print("")
+        selected_id = input("Input Discord ID to roll (\"end\" to quit): ")
+        if selected_id == "end":
+            return
+        member_row = get_member_row(selected_id)
+        if member_row is not None:
+            amount, item, sheet_num, pos = loot_roll(loot_table)
+            if sheet_num is None:
+                print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+                continue
+            elif sheet_num == "er":
+                amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+            print(f"{member_row[nick_column]} got {amount} {item}!")
+            if check_if_update_sheet():
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                    member_row[sheet_link_column],
+                                                                    item
+                                                                    )
+                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+            else:
+                log_addition(member_row, item, amount, "Autoadd Disabled")
+            print("")
+        else:
+            print(f"Could not find ID {selected_id}")
+
+
+def quest_reward():
+    extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
+    quest_normal = WeightedTable(os.path.join(constants.QUEST_ROLL_FOLDER, constants.QUEST_FILE_NAMES[0]))
+    quest_oos = WeightedTable(os.path.join(constants.QUEST_ROLL_FOLDER, constants.QUEST_FILE_NAMES[1]))
+    selected_id = 0
+    while selected_id != "end":
+        print("")
+        selected_id = input("Input Discord ID to give quest rewards to (\"end\" to quit): ")
+        if selected_id == "end":
+            return
+        member_row = get_member_row(selected_id)
+        if member_row is not None:
+            third_quest = input(f"Is this the third quest {member_row[nick_column]} has done this month? (y/n)")
+            while third_quest != "y" and third_quest != "n":
+                print("Enter y or n. ")
+                third_quest = input(f"Is this the third quest {member_row[nick_column]} has done this month? (y/n)")
+            loot_table = quest_oos if third_quest == "y" else quest_normal
+            amount, item, sheet_num, pos = loot_roll(loot_table)
+            if sheet_num is None:
+                print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+                continue
+            elif sheet_num == "er":
+                amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+            print(f"{member_row[nick_column]} got {amount} {item}!")
+            if check_if_update_sheet():
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                    member_row[sheet_link_column],
+                                                                    item
+                                                                    )
+                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+                sheet_num, pos = find_position_of_item("money")
+                new_val, old_val, sheet_name = change_value_of_cell(constants.QUEST_CURRENCY_AMOUNT, int(sheet_num),
+                                                                    pos,
+                                                                    member_row[sheet_link_column],
+                                                                    "money"
+                                                                    )
+                log_addition(member_row, "money", constants.QUEST_CURRENCY_AMOUNT, old_val, new_val, pos, sheet_name)
+            else:
+                log_addition(member_row, item, amount, "Autoadd Disabled")
+
+            print(f"You got **{constants.QUEST_CURRENCY_AMOUNT}** :pokedollar: and **{amount} {item}**!")
+            print("")
+        else:
+            print(f"Could not find ID {selected_id}")
+
+
 def add_item_loop():
     selected_id = 0
     while selected_id != "end":
@@ -390,6 +496,7 @@ def add_item_loop():
         if selected_id == "end":
             return
         member_row = get_member_row(selected_id)
+        print(f"Selected user is {member_row[nick_column]}.")
         if member_row is not None:
             item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
             sheet_num, pos = find_position_of_item(item)
@@ -408,6 +515,8 @@ def add_item_loop():
                                                                     item
                                                                     )
                 log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+                print(f"Added {get_article(item) if amount == 1 else amount} {item} to {member_row[nick_column]}'s "
+                      f"inventory!")
         else:
             print(f"Could not find ID {selected_id}")
 
@@ -433,6 +542,8 @@ def main():
             -- type one of the following options
             -- "tool" for standard tool activity rolls
             -- "gamble" for dice game corner roll with modifier
+            -- "roll" for different loot rolls
+            -- "quest" to give quest rewards
             -- "modify" to add/remove items in specific inventories
             -- "link" to get sheet URL 
             -- "end" to end program
@@ -442,6 +553,10 @@ def main():
             standard_activity_roll(tool_id)
         elif option == "gamble":
             dice_gamble_roll()
+        elif option == "roll":
+            item_loot_roll()
+        elif option == "quest":
+            quest_reward()
         elif option == "modify" or option == "add" or option == "remove":
             add_item_loop()
         elif option == "link":
@@ -469,7 +584,6 @@ item_positions = gen_item_positions()
 id_column = find_column(constants.MASTERSHEET_HEADERS[2])
 sheet_link_column = find_column(constants.MASTERSHEET_HEADERS[3])
 nick_column = find_column(constants.MASTERSHEET_HEADERS[0])
-extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
 changes_done = []
 
 main()

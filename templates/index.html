@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web GUI</title>
+</head>
+<body>
+    <form method="POST">
+        <label for="function">Select a function:</label>
+        <select name="function" id="function">
+            {% for func in functions %}
+                <option value="{{ func }}">{{ func }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <label for="name">Select a name:</label>
+        <select name="name" id="name">
+            {% for name in names %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <input type="submit" value="Run">
+    </form>
+</body>
+</html>

@@ -38,3 +38,9 @@ MISS_LABEL = "none"
 VALUES_WITHOUT_X_PREFIX = ["money", "pokedollar", "pokedollars", "poke", "gct", "gctoken", "gctokens", "$"]
 
 GAMBLE_PROMPT_FILE_NAME = "gamble.txt"
+
+ITEM_LOOT_ROLL_FOLDER = "rolls/items/"
+
+QUEST_ROLL_FOLDER = "rolls/quest/"
+QUEST_FILE_NAMES = ["quest_normal.txt", "quest_oos.txt"]
+QUEST_CURRENCY_AMOUNT = 100

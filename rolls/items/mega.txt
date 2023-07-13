@@ -1,0 +1,51 @@
+Venusaurite^0.3
+Charizardite X^0.3
+Charizardite Y^0.3
+Blastoisite^0.3
+Alakazite^0.3
+Gengarite^0.3
+Kangaskhanite^0.3
+Pinsirite^0.3
+Gyaradosite^0.3
+Aerodactylite^0.3
+Mewtwonite X^0.3
+Mewtwonite Y^0.3
+Ampharosite^0.3
+Scizorite^0.3
+Heracronite^0.3
+Houndoominite^0.3
+Tyranitarite^0.3
+Blazikenite^0.3
+Gardefoirite^0.3
+Mawilite^0.3
+Aggronite^0.3
+Medichamite^0.3
+Manectite^0.3
+Banettite^0.3
+Absolite^0.3
+Latiasite^0.3
+Garchompite^0.3
+Lucarionite^0.3
+Abomasite^0.3
+Beedrillite^0.3
+Pidgeotite^0.3
+Slowbronite^0.3
+Steelixite^0.3
+Sceptilite^0.3
+Swampertite^0.3
+Sablenite^0.3
+Sharpedonite^0.3
+Cameruptite^0.3
+Altarianite^0.3
+Glalitite^0.3
+Salamencite^0.3
+Metagrossite^0.3
+Green Orb^0.3
+Lopunnite^0.3
+Galladite^0.3
+Audinite^0.3
+Diancite^0.3
+Red Orb^0.3
+Blue Orb^0.3
+DNA Splicers^0.3
+Ultra Prism^0.3
