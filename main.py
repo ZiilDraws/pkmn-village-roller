@@ -428,7 +428,7 @@ def item_loot_roll():
                 continue
             elif sheet_num == "er":
                 amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
-            print(f"{member_row[nick_column]} got {amount} {item}!")
+            print(f"{member_row[nick_column]} got {get_article(item) if amount == 1 else amount} {item}!")
             if check_if_update_sheet():
                 new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                     member_row[sheet_link_column],
@@ -458,20 +458,33 @@ def quest_reward():
             while third_quest != "y" and third_quest != "n":
                 print("Enter y or n. ")
                 third_quest = input(f"Is this the third quest {member_row[nick_column]} has done this month? (y/n)")
-            loot_table = quest_oos if third_quest == "y" else quest_normal
-            amount, item, sheet_num, pos = loot_roll(loot_table)
+            amount, item, sheet_num, pos = loot_roll(quest_normal)
             if sheet_num is None:
                 print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
                 continue
             elif sheet_num == "er":
                 amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
             print(f"{member_row[nick_column]} got {amount} {item}!")
+            if third_quest == "y":
+                amount2, item2, sheet_num2, pos2 = loot_roll(quest_oos)
+                if sheet_num is None:
+                    print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+                    continue
+                elif sheet_num == "er":
+                    amount2, item2, sheet_num2, pos2 = loot_roll(extra_roller, int(pos))
+                print(f"{member_row[nick_column]} got {amount2} {item2}!")
             if check_if_update_sheet():
                 new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
                                                                     member_row[sheet_link_column],
                                                                     item
                                                                     )
                 log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+                if third_quest == "y":
+                    new_val, old_val, sheet_name = change_value_of_cell(int(amount2), int(sheet_num2), pos2,
+                                                                        member_row[sheet_link_column],
+                                                                        item2
+                                                                        )
+                    log_addition(member_row, item2, amount2, old_val, new_val, pos2, sheet_name)
                 sheet_num, pos = find_position_of_item("money")
                 new_val, old_val, sheet_name = change_value_of_cell(constants.QUEST_CURRENCY_AMOUNT, int(sheet_num),
                                                                     pos,
@@ -482,7 +495,10 @@ def quest_reward():
             else:
                 log_addition(member_row, item, amount, "Autoadd Disabled")
 
-            print(f"You got **{constants.QUEST_CURRENCY_AMOUNT}** :pokedollar: and **{amount} {item}**!")
+            print(f"You got **{constants.QUEST_CURRENCY_AMOUNT}** :pokedollar: and "
+                  f"**{get_article(item) if amount == 1 else amount} {item}**!")
+            if third_quest == "y":
+                print(f"You also get **{get_article(item2) if amount2 == 1 else amount2} {item2}**!")
             print("")
         else:
             print(f"Could not find ID {selected_id}")

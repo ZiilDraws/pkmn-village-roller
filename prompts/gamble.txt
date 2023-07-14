@@ -1,1 +1,1 @@
-You won {amount} GCT!
+You won **{amount} GCT**!
