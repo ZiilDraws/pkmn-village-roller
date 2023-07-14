@@ -205,6 +205,23 @@ def change_value_of_cell(dx_value, worksheet_id, position, url, item):
         return "Faulty position", old_value, None
 
 
+def check_to_have_item(dx_value, worksheet_id, position, url, item):
+    member_sheet = gc.open_by_url(url)
+    member_worksheet = member_sheet.get_worksheet(worksheet_id)
+    old_value = member_worksheet.acell(position).value
+    value = False
+    if old_value is not None:
+        value = re.match(r'^(x?)(\d+(,\d+)*)$', old_value)
+    if value:
+        new_value = int(value.group(2).replace(",", "")) + dx_value
+        if new_value < 0:
+            return False
+        return True
+    else:
+        print(f"The value at position {position} is faulty. Please check.")
+        return False
+
+
 def log_addition(member_row, item="None", amount=0, old_val=0, new_val=0, position="XX", sheet="X"):
     line = [member_row[id_column], member_row[nick_column], item, amount,
             old_val, new_val, position, sheet, member_row[sheet_link_column]]
@@ -322,50 +339,92 @@ def get_item_roll_file(txt_files):
         print("Invalid selection. Please try again.")
 
 
+def get_input_member_row(message, shop=False):
+    sel_id = 0
+    while sel_id != "end":
+        sel_id = input(message).lower()
+        if sel_id == "end":
+            return sel_id
+        elif shop and sel_id == "shop":
+            return "shop"
+        elif sel_id == "":
+            continue
+        member_row = get_member_row(sel_id)
+        if member_row is not None:
+            return member_row
+        else:
+            print(f"Could not find ID {sel_id}")
+
+
+def get_item_from_input(message, allow_none=False):
+    item = 0
+    while item != "end":
+        item = input(message).lower().strip()
+        if item == "end":
+            return item, None, None
+        elif allow_none and item == "":
+            return None, None, None
+        sheet_num, pos = find_position_of_item(item)
+        if sheet_num is None:
+            print(f"Cannot find {item}!")
+        else:
+            return item, sheet_num, pos
+
+
+def get_amount_from_input(message):
+    amount = ""
+    while amount != "end":
+        amount = process_positive_negative_int(input(message))
+        if amount == "end":
+            return amount
+        if amount is None or amount == 0:
+            print(f"Input is 0 or not an integer. You can type \"end\" to quit.")
+        else:
+            return amount
+
+
 # Perform a standard activity roll
 def standard_activity_roll(tool_id):
     loot_table = WeightedTable(f"rolls/tools/{constants.TOOL_FILE_NAMES[tool_id]}")
     extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
     tool_column = find_tool_column(tool_id)
-    selected_id = 0
-    while selected_id != "end":
+    member_row = 0
+    while member_row != "end":
         print("")
-        selected_id = input("Input Discord ID to roll (\"end\" to quit): ")
-        if selected_id == "end":
+        member_row = get_input_member_row("Input Discord ID to roll (\"end\" to quit): ")
+        if member_row == "end":
             return
-        member_row = get_member_row(selected_id)
-        if member_row is not None:
-            tool_tier = constants.TOOLS_TIER.index(member_row[tool_column].lower())
-            if tool_tier == 0:
-                print(f"{member_row[nick_column]} has no {constants.TOOL_IDS[tool_id]}!")
-            else:
-                amount, item, sheet_num, pos = loot_roll(loot_table, tool_tier)
-                if sheet_num is None:
-                    print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
-                    continue
-                elif sheet_num == "n":
-                    print(f"Oof, no item :(")
-                    if write_misses_to_file:
-                        log_addition(member_row)
-                    continue
-                elif sheet_num == "r":
-                    amount, item, sheet_num, pos = loot_roll(loot_table, 4)
-                elif sheet_num == "er":
-                    amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
-                print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]} \
-{constants.TOOL_IDS[tool_id]}!")
-                if check_if_update_sheet():
-                    new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
-                                                                        member_row[sheet_link_column],
-                                                                        item
-                                                                        )
-                    log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
-                else:
-                    log_addition(member_row, item, amount, "Autoadd Disabled")
-                print("")
-                print(generate_tool_loot_message(member_row[nick_column], amount, item, tool_id))
+        tool_tier = constants.TOOLS_TIER.index(member_row[tool_column].lower())
+        if tool_tier == 0:
+            print(f"{member_row[nick_column]} has no {constants.TOOL_IDS[tool_id]}!")
         else:
-            print(f"Could not find ID {selected_id}")
+            amount, item, sheet_num, pos = loot_roll(loot_table, tool_tier)
+            if sheet_num is None:
+                print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+                continue
+            elif sheet_num == "n":
+                print(f"{member_row[nick_column]} got no item with their {member_row[tool_column]} \
+                {constants.TOOL_IDS[tool_id]}.")
+                print(f"Oof, no item :(")
+                if write_misses_to_file:
+                    log_addition(member_row)
+                continue
+            elif sheet_num == "r":
+                amount, item, sheet_num, pos = loot_roll(loot_table, 4)
+            elif sheet_num == "er":
+                amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+            print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]} \
+            {constants.TOOL_IDS[tool_id]}!")
+            if check_if_update_sheet():
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                    member_row[sheet_link_column],
+                                                                    item
+                                                                    )
+                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+            else:
+                log_addition(member_row, item, amount, "Autoadd Disabled")
+            print("")
+            print(generate_tool_loot_message(member_row[nick_column], amount, item, tool_id))
 
 
 def dice_gamble_roll():
@@ -373,182 +432,238 @@ def dice_gamble_roll():
     gamble_value_ranges = process_list_of_ranges(config.get("GameCorner", "dice_value_ranges"))
     gamble_reward_ranges = process_list_of_ranges(config.get("GameCorner", "dice_reward_ranges"))
     sheet_num, pos = find_position_of_item("gct")
-    selected_id = 0
-    while selected_id != "end":
+    member_row = 0
+    while member_row != "end":
         print("")
-        selected_id = input("Input Discord ID of gamer (\"end\" to quit): ")
-        if selected_id == "end":
+        member_row = get_input_member_row("Input Discord ID of gamer (\"end\" to quit): ")
+        if member_row == "end":
             return
-        member_row = get_member_row(selected_id)
-        if member_row is not None:
-            modifier = process_positive_negative_int(input("Input modifier value: "))
-            if modifier is None:
-                print(f"Input is not a digit")
-                continue
-            dice_roll = random.randint(1, dice_max)
-            dice_roll_mod = max(1, dice_roll + modifier)
-            reward = "ERROR"
-            for index, value_range in enumerate(gamble_value_ranges):
-                if value_range[0] <= dice_roll_mod <= value_range[1]:
-                    reward = random.randint(gamble_reward_ranges[index][0], gamble_reward_ranges[index][1])
-            print(f"{member_row[nick_column]} won {reward} GCT with a roll of {dice_roll_mod} ({dice_roll}+{modifier})")
+        modifier = process_positive_negative_int(input("Input modifier value: "))
+        if modifier is None:
+            print(f"Input is not a digit")
+            continue
+        dice_roll = random.randint(1, dice_max)
+        dice_roll_mod = max(1, dice_roll + modifier)
+        reward = "ERROR"
+        for index, value_range in enumerate(gamble_value_ranges):
+            if value_range[0] <= dice_roll_mod <= value_range[1]:
+                reward = random.randint(gamble_reward_ranges[index][0], gamble_reward_ranges[index][1])
+        print(f"{member_row[nick_column]} won {reward} GCT with a roll of {dice_roll_mod} ({dice_roll}+{modifier})")
 
-            if check_if_update_sheet(True) and reward != "ERROR":
-                new_val, old_val, sheet_name = change_value_of_cell(reward, int(sheet_num), pos,
-                                                                    member_row[sheet_link_column], "GCT")
-                log_addition(member_row, "gct", reward, old_val, new_val, pos, sheet_name)
-            else:
-                log_addition(member_row, "gct", reward, "Autoadd Disabled")
-                print(member_row[sheet_link_column])
-
-            print(generate_loot_message(member_row[nick_column], reward, "GCT", constants.GAMBLE_PROMPT_FILE_NAME))
-
+        if check_if_update_sheet(True) and reward != "ERROR":
+            new_val, old_val, sheet_name = change_value_of_cell(reward, int(sheet_num), pos,
+                                                                member_row[sheet_link_column], "GCT")
+            log_addition(member_row, "gct", reward, old_val, new_val, pos, sheet_name)
         else:
-            print(f"Could not find ID {selected_id}")
+            log_addition(member_row, "gct", reward, "Autoadd Disabled")
+            print(member_row[sheet_link_column])
+
+        print(generate_loot_message(member_row[nick_column], reward, "GCT", constants.GAMBLE_PROMPT_FILE_NAME))
 
 
 def item_loot_roll():
     extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
-    selected_id = "end"
+    member_row = "end"
     txt_files = get_txt_files(constants.ITEM_LOOT_ROLL_FOLDER)
     selected_file = get_item_roll_file(txt_files)
     if selected_file is not None:
-        selected_id = 0
+        member_row = 0
         loot_table = WeightedTable(os.path.join(constants.ITEM_LOOT_ROLL_FOLDER, selected_file))
-    while selected_id != "end":
+    while member_row != "end":
         print("")
-        selected_id = input("Input Discord ID to roll (\"end\" to quit): ")
-        if selected_id == "end":
+        member_row = get_input_member_row("Input Discord ID to roll (\"end\" to quit): ")
+        if member_row == "end":
             return
-        member_row = get_member_row(selected_id)
-        if member_row is not None:
-            amount, item, sheet_num, pos = loot_roll(loot_table)
-            if sheet_num is None:
-                print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
-                continue
-            elif sheet_num == "er":
-                amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
-            print(f"{member_row[nick_column]} got {get_article(item) if amount == 1 else amount} {item}!")
-            if check_if_update_sheet():
-                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
-                                                                    member_row[sheet_link_column],
-                                                                    item
-                                                                    )
-                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
-            else:
-                log_addition(member_row, item, amount, "Autoadd Disabled")
-            print("")
+        amount, item, sheet_num, pos = loot_roll(loot_table)
+        if sheet_num is None:
+            print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+            continue
+        elif sheet_num == "er":
+            amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+        print(f"{member_row[nick_column]} got {get_article(item) if amount == 1 else amount} {item}!")
+        if check_if_update_sheet():
+            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                member_row[sheet_link_column],
+                                                                item
+                                                                )
+            log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
         else:
-            print(f"Could not find ID {selected_id}")
+            log_addition(member_row, item, amount, "Autoadd Disabled")
+        print("")
+
+
+def trade_shop_loop(only_shop=False):
+    member_one_row = 0
+    while member_one_row != "end":
+        shop = only_shop
+        print("")
+        member_one_row = get_input_member_row(f"Input Discord ID for {'first' if not shop else ''} trader (\"end\" to "
+                                        f"quit): ")
+        if member_one_row == "end":
+            return
+        print(f"Trader {'1' if not shop else ''} is {member_one_row[nick_column]}.")
+
+        if not shop:
+            member_two_row = get_input_member_row(f"Input Discord ID for second trader (\"shop\" to shop, \"end\" to "
+                                                  f"quit): ", True)
+            if member_two_row == "end":
+                return
+            elif member_two_row == "shop":
+                shop = True
+
+        item1, sheet_num1, pos1 = get_item_from_input(f"Input item name for {member_one_row[nick_column]} to "
+                                                   f"{'send' if not shop else 'spend'} "
+                                                   f"(Spelling needs to be the same as used in the sheet): ")
+        amount1 = get_amount_from_input(f"Input amount of {item1} for {member_one_row[nick_column]} to give "
+                                        f"(e.g. 5, 32 or -300): ")
+
+        item2, sheet_num2, pos2 = get_item_from_input(f"Input item name for "
+                                                      f"{member_two_row[nick_column] if not shop else 'shop'} to send ("
+                                                      f"{'Press enter directly for Nothing, ' if not shop else ''}"
+                                                      f"Spelling needs to be the same as used in the sheet): ", not shop
+                                                      )
+        if shop or item2 is not None:
+            amount2 = get_amount_from_input(f"Input amount of {item2} for "
+                                            f"{member_two_row[nick_column] if not shop else 'shop'} to give "
+                                            f"(e.g. 5, 32 or -300): ")
+            print(f"{member_one_row[nick_column]} gives {member_two_row[nick_column] if not shop else 'shop'} "
+                  f"{amount1} {item1} for their {amount2} {item2}.")
+        else:
+            print(f"{member_one_row[nick_column]} gives {member_two_row[nick_column]} {amount1} {item1} ")
+
+        updateable = check_to_have_item(int(amount1), int(sheet_num1), pos1, member_one_row[sheet_link_column], item1)
+        if not updateable:
+            print(f"{member_one_row[sheet_link_column]} does not have {amount1} {item1}! Canceling...")
+        if not shop and item2 is not None:
+            updateable2 = check_to_have_item(int(amount2), int(sheet_num2), pos2, member_two_row[sheet_link_column],
+                                             item2)
+            if not updateable2:
+                print(f"{member_two_row[sheet_link_column]} does not have {amount2} {item2}! Canceling...")
+        else:
+            updateable2 = True
+
+        if updateable and updateable2 and check_if_update_sheet():
+            new_val, old_val, sheet_name = change_value_of_cell(-int(amount1), int(sheet_num1), pos1,
+                                                                member_one_row[sheet_link_column],
+                                                                item1
+                                                                )
+            log_addition(member_one_row, item1, -amount1, old_val, new_val, pos1, sheet_name)
+            if not shop:
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount1), int(sheet_num1), pos1,
+                                                                    member_two_row[sheet_link_column],
+                                                                    item1
+                                                                    )
+                log_addition(member_two_row, item1, amount1, old_val, new_val, pos1, sheet_name)
+            if item2 is not None:
+                if not shop:
+                    new_val, old_val, sheet_name = change_value_of_cell(-int(amount2), int(sheet_num2), pos2,
+                                                                        member_two_row[sheet_link_column],
+                                                                        item2
+                                                                        )
+                    log_addition(member_two_row, item2, -amount2, old_val, new_val, pos2, sheet_name)
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount2), int(sheet_num2), pos2,
+                                                                    member_one_row[sheet_link_column],
+                                                                    item2
+                                                                    )
+                log_addition(member_one_row, item2, amount2, old_val, new_val, pos2, sheet_name)
+            print("Trade complete!")
 
 
 def quest_reward():
     extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
     quest_normal = WeightedTable(os.path.join(constants.QUEST_ROLL_FOLDER, constants.QUEST_FILE_NAMES[0]))
     quest_oos = WeightedTable(os.path.join(constants.QUEST_ROLL_FOLDER, constants.QUEST_FILE_NAMES[1]))
-    selected_id = 0
-    while selected_id != "end":
+    member_row = 0
+    while member_row != "end":
         print("")
-        selected_id = input("Input Discord ID to give quest rewards to (\"end\" to quit): ")
-        if selected_id == "end":
+        member_row = get_input_member_row("Input Discord ID to give quest rewards to (\"end\" to quit): ")
+        if member_row == "end":
             return
-        member_row = get_member_row(selected_id)
-        if member_row is not None:
+        third_quest = input(f"Is this the third quest {member_row[nick_column]} has done this month? (y/n)")
+        while third_quest != "y" and third_quest != "n":
+            print("Enter y or n. ")
             third_quest = input(f"Is this the third quest {member_row[nick_column]} has done this month? (y/n)")
-            while third_quest != "y" and third_quest != "n":
-                print("Enter y or n. ")
-                third_quest = input(f"Is this the third quest {member_row[nick_column]} has done this month? (y/n)")
-            amount, item, sheet_num, pos = loot_roll(quest_normal)
+        amount, item, sheet_num, pos = loot_roll(quest_normal)
+        if sheet_num is None:
+            print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+            continue
+        elif sheet_num == "er":
+            amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+        print(f"{member_row[nick_column]} got {amount} {item}!")
+        if third_quest == "y":
+            amount2, item2, sheet_num2, pos2 = loot_roll(quest_oos)
             if sheet_num is None:
                 print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
                 continue
             elif sheet_num == "er":
-                amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
-            print(f"{member_row[nick_column]} got {amount} {item}!")
+                amount2, item2, sheet_num2, pos2 = loot_roll(extra_roller, int(pos))
+            print(f"{member_row[nick_column]} got {amount2} {item2}!")
+        if check_if_update_sheet():
+            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                member_row[sheet_link_column],
+                                                                item
+                                                                )
+            log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
             if third_quest == "y":
-                amount2, item2, sheet_num2, pos2 = loot_roll(quest_oos)
-                if sheet_num is None:
-                    print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
-                    continue
-                elif sheet_num == "er":
-                    amount2, item2, sheet_num2, pos2 = loot_roll(extra_roller, int(pos))
-                print(f"{member_row[nick_column]} got {amount2} {item2}!")
-            if check_if_update_sheet():
-                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                new_val, old_val, sheet_name = change_value_of_cell(int(amount2), int(sheet_num2), pos2,
                                                                     member_row[sheet_link_column],
-                                                                    item
+                                                                    item2
                                                                     )
-                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
-                if third_quest == "y":
-                    new_val, old_val, sheet_name = change_value_of_cell(int(amount2), int(sheet_num2), pos2,
-                                                                        member_row[sheet_link_column],
-                                                                        item2
-                                                                        )
-                    log_addition(member_row, item2, amount2, old_val, new_val, pos2, sheet_name)
-                sheet_num, pos = find_position_of_item("money")
-                new_val, old_val, sheet_name = change_value_of_cell(constants.QUEST_CURRENCY_AMOUNT, int(sheet_num),
-                                                                    pos,
-                                                                    member_row[sheet_link_column],
-                                                                    "money"
-                                                                    )
-                log_addition(member_row, "money", constants.QUEST_CURRENCY_AMOUNT, old_val, new_val, pos, sheet_name)
-            else:
-                log_addition(member_row, item, amount, "Autoadd Disabled")
-
-            print(f"You got **{constants.QUEST_CURRENCY_AMOUNT}** :pokedollar: and "
-                  f"**{get_article(item) if amount == 1 else amount} {item}**!")
-            if third_quest == "y":
-                print(f"You also get **{get_article(item2) if amount2 == 1 else amount2} {item2}**!")
-            print("")
+                log_addition(member_row, item2, amount2, old_val, new_val, pos2, sheet_name)
+            sheet_num, pos = find_position_of_item("money")
+            new_val, old_val, sheet_name = change_value_of_cell(constants.QUEST_CURRENCY_AMOUNT, int(sheet_num),
+                                                                pos,
+                                                                member_row[sheet_link_column],
+                                                                "money"
+                                                                )
+            log_addition(member_row, "money", constants.QUEST_CURRENCY_AMOUNT, old_val, new_val, pos, sheet_name)
         else:
-            print(f"Could not find ID {selected_id}")
+            log_addition(member_row, item, amount, "Autoadd Disabled")
+
+        print(f"You got **{constants.QUEST_CURRENCY_AMOUNT}** :pokedollar: and "
+              f"**{get_article(item) if amount == 1 else amount} {item}**!")
+        if third_quest == "y":
+            print(f"You also get **{get_article(item2) if amount2 == 1 else amount2} {item2}**!")
+        print("")
 
 
 def add_item_loop():
-    selected_id = 0
-    while selected_id != "end":
+    member_row = 0
+    while member_row != "end":
         print("")
-        selected_id = input("Input Discord ID to add/remove item (\"end\" to quit): ")
-        if selected_id == "end":
+        member_row = get_input_member_row("Input Discord ID to add/remove item (\"end\" to quit): ")
+        if member_row == "end":
             return
-        member_row = get_member_row(selected_id)
         print(f"Selected user is {member_row[nick_column]}.")
-        if member_row is not None:
-            item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
-            sheet_num, pos = find_position_of_item(item)
-            if sheet_num is None:
-                print(f"Cannot find {item}!")
-                print(member_row[sheet_link_column])
-                continue
-            amount = process_positive_negative_int(input(f"Input amount of {item} (e.g. 5, 32 or -300): "))
-            if amount is None or amount == 0:
-                print(f"Input is 0 or not an integer.")
-                print(member_row[sheet_link_column])
-                continue
-            if check_if_update_sheet(True):
-                new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
-                                                                    member_row[sheet_link_column],
-                                                                    item
-                                                                    )
-                log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
-                print(f"Added {get_article(item) if amount == 1 else amount} {item} to {member_row[nick_column]}'s "
-                      f"inventory!")
-        else:
-            print(f"Could not find ID {selected_id}")
+        item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
+        sheet_num, pos = find_position_of_item(item)
+        if sheet_num is None:
+            print(f"Cannot find {item}!")
+            print(member_row[sheet_link_column])
+            continue
+        amount = process_positive_negative_int(input(f"Input amount of {item} (e.g. 5, 32 or -300): "))
+        if amount is None or amount == 0:
+            print(f"Input is 0 or not an integer.")
+            print(member_row[sheet_link_column])
+            continue
+        if check_if_update_sheet(True):
+            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                member_row[sheet_link_column],
+                                                                item
+                                                                )
+            log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+            print(f"Added {get_article(item) if amount == 1 else amount} {item} to {member_row[nick_column]}'s "
+                  f"inventory!")
 
 
 def link_loop():
-    selected_id = 0
-    while selected_id != "end":
+    member_row = 0
+    while member_row != "end":
         print("")
-        selected_id = input("Input Discord ID to get URL (\"end\" to quit): ")
-        if selected_id == "end":
+        member_row = get_input_member_row("Input Discord ID to get URL (\"end\" to quit): ")
+        if member_row == "end":
             return
-        member_row = get_member_row(selected_id)
-        if member_row is not None:
-            print(f"{member_row[nick_column]}'s URL is {member_row[sheet_link_column]}")
-        else:
-            print(f"Could not find ID {selected_id}")
+        print(f"{member_row[nick_column]}'s URL is {member_row[sheet_link_column]}")
 
 
 def main():
@@ -559,6 +674,8 @@ def main():
             -- "tool" for standard tool activity rolls
             -- "gamble" for dice game corner roll with modifier
             -- "roll" for different loot rolls
+            -- "trade" for player trades/shop trades
+            -- "shop" for just shop trades
             -- "quest" to give quest rewards
             -- "modify" to add/remove items in specific inventories
             -- "link" to get sheet URL 
@@ -573,6 +690,10 @@ def main():
             item_loot_roll()
         elif option == "quest":
             quest_reward()
+        elif option == "trade":
+            trade_shop_loop()
+        elif option == "shop":
+            trade_shop_loop(True)
         elif option == "modify" or option == "add" or option == "remove":
             add_item_loop()
         elif option == "link":
