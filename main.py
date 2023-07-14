@@ -205,7 +205,7 @@ def change_value_of_cell(dx_value, worksheet_id, position, url, item):
         return "Faulty position", old_value, None
 
 
-def check_to_have_item(dx_value, worksheet_id, position, url, item):
+def check_to_have_item(dx_value, worksheet_id, position, url):
     member_sheet = gc.open_by_url(url)
     member_worksheet = member_sheet.get_worksheet(worksheet_id)
     old_value = member_worksheet.acell(position).value
@@ -213,7 +213,7 @@ def check_to_have_item(dx_value, worksheet_id, position, url, item):
     if old_value is not None:
         value = re.match(r'^(x?)(\d+(,\d+)*)$', old_value)
     if value:
-        new_value = int(value.group(2).replace(",", "")) + dx_value
+        new_value = int(value.group(2).replace(",", "")) - dx_value
         if new_value < 0:
             return False
         return True
@@ -531,14 +531,13 @@ def trade_shop_loop(only_shop=False):
         else:
             print(f"{member_one_row[nick_column]} gives {member_two_row[nick_column]} {amount1} {item1} ")
 
-        updateable = check_to_have_item(int(amount1), int(sheet_num1), pos1, member_one_row[sheet_link_column], item1)
+        updateable = check_to_have_item(int(amount1), int(sheet_num1), pos1, member_one_row[sheet_link_column],)
         if not updateable:
-            print(f"{member_one_row[sheet_link_column]} does not have {amount1} {item1}! Canceling...")
+            print(f"{member_one_row[nick_column]} does not have {amount1} {item1}! Canceling...")
         if not shop and item2 is not None:
-            updateable2 = check_to_have_item(int(amount2), int(sheet_num2), pos2, member_two_row[sheet_link_column],
-                                             item2)
+            updateable2 = check_to_have_item(int(amount2), int(sheet_num2), pos2, member_two_row[sheet_link_column],)
             if not updateable2:
-                print(f"{member_two_row[sheet_link_column]} does not have {amount2} {item2}! Canceling...")
+                print(f"{member_two_row[nick_column]} does not have {amount2} {item2}! Canceling...")
         else:
             updateable2 = True
 
