@@ -47,8 +47,6 @@ Rename this file to "credentials" and place it in a folder called "env" next to 
 If you have file extensions enabled, make sure the credentials file stays as a .json
 
 ### 5. Share the Google Sheets folder:
-THIS IS ONLY NECCESSARY (and only possible) WHEN PROGRAM IS OUT OF PRE-RELEASE
-
 Open sharing for the Drive folder containing all member sheets.
 
 Enter the email address associated with the service account you created in step 4. (If you have lost this one, you can find it at https://console.cloud.google.com/iam-admin/serviceaccounts)
