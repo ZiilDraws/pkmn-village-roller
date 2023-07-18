@@ -8,8 +8,8 @@ Devolution Pebble
 x3 Weeds
 x2 Weeds
 x1 Weed
-x3 Manila Clams
-x2 Manila Clams
+x3 Manila Clam
+x2 Manila Clam
 x1 Manila Clam
 Ant
 Mole Cricket
@@ -30,8 +30,8 @@ Devolution Pebble
 x3 Weeds
 x2 Weeds
 x1 Weed
-x3 Manila Clams
-x2 Manila Clams
+x3 Manila Clam
+x2 Manila Clam
 x1 Manila Clam
 Ant
 Mole Cricket
@@ -54,7 +54,7 @@ Form-Change Stone
 Evolution Stone
 Devolution Pebble
 x3 Weeds ^0.8
-x3 Manila Clams ^0.8
+x3 Manila Clam ^0.8
 Ant
 Mole Cricket
 Hermit Crab

@@ -1,0 +1,166 @@
+Magic-Infused Stone
+Magic-Infused Stone
+Magic-Infused Stone
+Magic-Infused Stone
+Magic-Infused Stick
+Magic-Infused Stick
+Magic-Infused Stick
+Magic-Infused Stick
+HM
+Experimental Wand
+Swap Wand
+Exchange Wand
+HM
+Experimental Wand
+Swap Wand
+Exchange Wand
+HM
+Experimental Wand
+Swap Wand
+Exchange Wand
+HM
+Experimental Wand
+Swap Wand
+Exchange Wand
+Legendary Ticket
+Hybrid Wand
+Legendary Hybrid Wand
+Delta Wand
+Mutant Wand
+Shiny Wand
+Reset Wand
+Odd Wand
+Legendary Ticket
+Hybrid Wand
+Legendary Hybrid Wand
+Delta Wand
+Mutant Wand
+Shiny Wand
+Reset Wand
+Odd Wand
+Legendary Ticket
+Hybrid Wand
+Legendary Hybrid Wand
+Delta Wand
+Mutant Wand
+Shiny Wand
+Reset Wand
+Odd Wand
+Snorlax Star^0.3
+Charizard Star^0.3
+Pikachu Star^0.3
+Eevee Star^0.3
+Butterfree Star^0.3
+Meowth Star^0.3
+Corviknight Star^0.3
+Alcremie Star^0.3
+Drednaw Star^0.3
+Machamp Star^0.3
+Gengar Star^0.3
+Toxtricity Star^0.3
+Melmetal Star^0.3
+Coalossal Star^0.3
+Sandaconda Star^0.3
+Centiskorch Star^0.3
+Grimmsnarl Star^0.3
+Hatterene Star^0.3
+Copperajah Star^0.3
+Duraludon Star^0.3
+Flapple Star^0.3
+Appletun Star^0.3
+Orbeetle Star^0.3
+Garbodor Star^0.3
+Kingler Star^0.3
+Lapras Star^0.3
+Inteleon Star^0.3
+Cinderace Star^0.3
+Rillaboom Star^0.3
+Urshifu Star^0.3
+Venusaur Star^0.3
+Blastoise Star^0.3
+Venusaurite^0.3
+Charizardite X^0.3
+Charizardite Y^0.3
+Blastoisite^0.3
+Alakazite^0.3
+Gengarite^0.3
+Kangaskhanite^0.3
+Pinsirite^0.3
+Gyaradosite^0.3
+Aerodactylite^0.3
+Mewtwonite X^0.3
+Mewtwonite Y^0.3
+Ampharosite^0.3
+Scizorite^0.3
+Heracronite^0.3
+Houndoominite^0.3
+Tyranitarite^0.3
+Blazikenite^0.3
+Gardefoirite^0.3
+Mawilite^0.3
+Aggronite^0.3
+Medichamite^0.3
+Manectite^0.3
+Banettite^0.3
+Absolite^0.3
+Latiasite^0.3
+Garchompite^0.3
+Lucarionite^0.3
+Abomasite^0.3
+Beedrillite^0.3
+Pidgeotite^0.3
+Slowbronite^0.3
+Steelixite^0.3
+Sceptilite^0.3
+Swampertite^0.3
+Sablenite^0.3
+Sharpedonite^0.3
+Cameruptite^0.3
+Altarianite^0.3
+Glalitite^0.3
+Salamencite^0.3
+Metagrossite^0.3
+Green Orb^0.3
+Lopunnite^0.3
+Galladite^0.3
+Audinite^0.3
+Diancite^0.3
+Red Orb^0.3
+Blue Orb^0.3
+DNA Splicers^0.3
+Ultra Prism^0.3
+Buginium Z^0.3
+Darkinium Z^0.3
+Dragonium Z^0.3
+Electrium Z^0.3
+Fairium Z^0.3
+Fightinium Z^0.3
+Firium Z^0.3
+Flyinium Z^0.3
+Ghostium Z^0.3
+Grassium Z^0.3
+Grounium Z^0.3
+Icium Z^0.3
+Normalium Z^0.3
+Poisonium Z^0.3
+Psychium Z^0.3
+Rockium Z^0.3
+Steelium Z^0.3
+Waterium Z^0.3
+Alorachium Z^0.3
+Decidium Z^0.3
+Eevium Z^0.3
+Incinium Z^0.3
+Kommonium Z^0.3
+Lunalium Z^0.3
+Lycanium Z^0.3
+Marshadium Z^0.3
+Mewnium Z^0.3
+Mimikium Z^0.3
+Pikanium Z^0.3
+Pikashunium Z^0.3
+Primarium Z^0.3
+Snorlium Z^0.3
+Solganium Z^0.3
+Tapunium Z^0.3
+Ultranecrozium Z^0.3

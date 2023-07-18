@@ -166,7 +166,7 @@ Miyama Stag ^2
 Giant Stag
 Rainbow Stag
 Cyclommatus Stag ^2
-Girrafe Stag
+Giraffe Stag
 Horned Dynastid
 Horned Atlas ^2
 Horned Elephant ^2
