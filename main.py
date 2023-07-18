@@ -371,14 +371,14 @@ def get_item_from_input(message, allow_none=False):
             return item, sheet_num, pos
 
 
-def get_amount_from_input(message):
+def get_amount_from_input(message, allow_zero=False):
     amount = ""
     while amount != "end":
         amount = process_positive_negative_int(input(message))
         if amount == "end":
             return amount
-        if amount is None or amount == 0:
-            print(f"Input is 0 or not an integer. You can type \"end\" to quit.")
+        if (allow_zero and amount is None) or (not allow_zero and (amount == 0 or amount is None)):
+            print(f"Input is {'' if allow_zero else '0 or '}not an integer. You can type \"end\" to quit.")
         else:
             return amount
 
@@ -400,6 +400,8 @@ def standard_activity_roll(tool_id):
         else:
             amount, item, sheet_num, pos = loot_roll(loot_table, tool_tier)
             if sheet_num is None:
+                print(f"{member_row[nick_column]} got {amount} {item} with {member_row[tool_column]}"
+                      f" {constants.TOOL_IDS[tool_id]}!")
                 print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
                 continue
             elif sheet_num == "n":
@@ -438,9 +440,8 @@ def dice_gamble_roll():
         member_row = get_input_member_row("Input Discord ID of gamer (\"end\" to quit): ")
         if member_row == "end":
             return
-        modifier = process_positive_negative_int(input("Input modifier value: "))
-        if modifier is None:
-            print(f"Input is not a digit")
+        modifier = get_amount_from_input("Input modifier value: ")
+        if modifier == "end":
             continue
         dice_roll = random.randint(1, dice_max)
         dice_roll_mod = max(1, dice_roll + modifier)
@@ -498,7 +499,7 @@ def trade_shop_loop(only_shop=False):
         shop = only_shop
         print("")
         member_one_row = get_input_member_row(f"Input Discord ID for {'first' if not shop else ''} trader (\"end\" to "
-                                        f"quit): ")
+                                              f"quit): ")
         if member_one_row == "end":
             return
         print(f"Trader {'1' if not shop else ''} is {member_one_row[nick_column]}.")
@@ -512,30 +513,38 @@ def trade_shop_loop(only_shop=False):
                 shop = True
 
         item1, sheet_num1, pos1 = get_item_from_input(f"Input item name for {member_one_row[nick_column]} to "
-                                                   f"{'send' if not shop else 'spend'} "
-                                                   f"(Spelling needs to be the same as used in the sheet): ")
+                                                      f"{f'send to {member_two_row[nick_column]}' if not shop else 'spend'}" 
+                                                      f" (Spelling needs to be the same as used in the sheet): ")
+        if item1 == "end":
+            continue
         amount1 = get_amount_from_input(f"Input amount of {item1} for {member_one_row[nick_column]} to give "
                                         f"(e.g. 5, 32 or -300): ")
+        if amount1 == "end":
+            continue
 
         item2, sheet_num2, pos2 = get_item_from_input(f"Input item name for "
                                                       f"{member_two_row[nick_column] if not shop else 'shop'} to send ("
                                                       f"{'Press enter directly for Nothing, ' if not shop else ''}"
                                                       f"Spelling needs to be the same as used in the sheet): ", not shop
                                                       )
+        if item2 == "end":
+            continue
         if shop or item2 is not None:
             amount2 = get_amount_from_input(f"Input amount of {item2} for "
                                             f"{member_two_row[nick_column] if not shop else 'shop'} to give "
                                             f"(e.g. 5, 32 or -300): ")
+            if amount2 == "end":
+                continue
             print(f"{member_one_row[nick_column]} gives {member_two_row[nick_column] if not shop else 'shop'} "
                   f"{amount1} {item1} for their {amount2} {item2}.")
         else:
             print(f"{member_one_row[nick_column]} gives {member_two_row[nick_column]} {amount1} {item1} ")
 
-        updateable = check_to_have_item(int(amount1), int(sheet_num1), pos1, member_one_row[sheet_link_column],)
+        updateable = check_to_have_item(int(amount1), int(sheet_num1), pos1, member_one_row[sheet_link_column], )
         if not updateable:
             print(f"{member_one_row[nick_column]} does not have {amount1} {item1}! Canceling...")
         if not shop and item2 is not None:
-            updateable2 = check_to_have_item(int(amount2), int(sheet_num2), pos2, member_two_row[sheet_link_column],)
+            updateable2 = check_to_have_item(int(amount2), int(sheet_num2), pos2, member_two_row[sheet_link_column], )
             if not updateable2:
                 print(f"{member_two_row[nick_column]} does not have {amount2} {item2}! Canceling...")
         else:
@@ -591,11 +600,11 @@ def quest_reward():
         print(f"{member_row[nick_column]} got {amount} {item}!")
         if third_quest == "y":
             amount2, item2, sheet_num2, pos2 = loot_roll(quest_oos)
-            if sheet_num is None:
-                print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+            if sheet_num2 is None:
+                print(f"Cannot find {item2}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
                 continue
-            elif sheet_num == "er":
-                amount2, item2, sheet_num2, pos2 = loot_roll(extra_roller, int(pos))
+            elif sheet_num2 == "er":
+                amount2, item2, sheet_num2, pos2 = loot_roll(extra_roller, int(pos2))
             print(f"{member_row[nick_column]} got {amount2} {item2}!")
         if check_if_update_sheet():
             new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
@@ -634,13 +643,13 @@ def add_item_loop():
         if member_row == "end":
             return
         print(f"Selected user is {member_row[nick_column]}.")
-        item = input("Input item name (Spelling needs to be the same as used in the sheet): ")
-        sheet_num, pos = find_position_of_item(item)
-        if sheet_num is None:
-            print(f"Cannot find {item}!")
-            print(member_row[sheet_link_column])
+        item, sheet_num, pos = get_item_from_input("Input item name (Spelling needs to be the same as used in the "
+                                                   "sheet): ")
+        if item == "end":
             continue
-        amount = process_positive_negative_int(input(f"Input amount of {item} (e.g. 5, 32 or -300): "))
+        amount = get_amount_from_input(f"Input amount of {item} (e.g. 5, 32 or -300): ")
+        if amount == "end":
+            continue
         if amount is None or amount == 0:
             print(f"Input is 0 or not an integer.")
             print(member_row[sheet_link_column])
