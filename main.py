@@ -5,6 +5,7 @@ import gspread
 import constants
 import re
 import configparser
+import clipboard
 from oauth2client.service_account import ServiceAccountCredentials
 from pyphonetics import Soundex
 
@@ -160,6 +161,8 @@ def generate_loot_message(name, amount, item, loot_file_name):
     line = read_random_line(os.path.join("prompts", loot_file_name))
     replacements = {"name": name, "amount": amount, "item": item}
     edited_line = replace_placeholders(line, replacements)
+    if roll_messages_to_clipboard:
+        clipboard.copy(edited_line)
     return edited_line
 
 
@@ -720,6 +723,15 @@ auto_add_to_inventory = config.getboolean('Settings', 'auto_add_to_inventory')
 auto_deny_updating_sheet = config.getboolean('Settings', 'auto_deny_updating_sheet')
 save_changes_done_to_file = config.getboolean('Settings', 'save_changes_done_to_file')
 write_misses_to_file = config.getboolean('Settings', 'write_misses_to_file')
+roll_messages_to_clipboard = config.getboolean('Settings', 'roll_messages_to_clipboard')
+if roll_messages_to_clipboard:
+    oldclip = clipboard.paste()
+    testint = f"{random.randint(0, 1000)}"
+    clipboard.copy(testint)
+    if testint != clipboard.paste():
+        print("Clipboard copying does not work on this computer")
+    else:
+        clipboard.copy(oldclip)
 
 os.makedirs("logs", exist_ok=True)
 log_file = os.path.join("logs", constants.LOG_FILE_NAME)

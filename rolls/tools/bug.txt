@@ -41,7 +41,7 @@ Miyama Stag ^ 0.3
 Giant Stag ^0.5
 Rainbow Stag
 Cyclommatus Stag ^0.3
-Girrafe Stag ^0.5
+Giraffe Stag ^0.5
 Horned Dynastid
 Horned Atlas ^0.1
 Horned Elephant ^0.2

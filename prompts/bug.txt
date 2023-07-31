@@ -1,1 +1,1 @@
-You caught **{amount} {item}!!
+You caught **{amount} {item}**!
