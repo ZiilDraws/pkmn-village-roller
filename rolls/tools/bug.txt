@@ -1,188 +1,104 @@
 none^8
-Tiger Butterfly ^5
-Common Bluebottle ^2
-Paper Kite Butterfly ^5
-Great Purple Emperor
-Emperor Butterfly
-Agrias Butterfly
-Rajah Brooke's Birdwing ^2
+Common Butterfly ^5
+Yellow Butterfly ^5
+Paper Kite Butterfly
+Monarch Butterfly ^2
 Moth
-Atlas Moth ^0.5
-Madagascan Sunset Moth
 Long Locust
-Grasshopper
+Migratory Locust
+Rice Grasshopper
+Cricket
+Bell Cricket
 Mantis
 Orchid Mantis ^0.5
-Honeybee
 Wasp
-Brown Cicada
-Robust Cicada
-Evening Cicada
-Cicada Shell ^2
+Red Dragonfly ^2
 Darner Dragonfly
 Banded Dragonfly
-Pondskater ^2
-Diving Beetle
-Giant Water Bug
 Stinkbug
 Man-Faced Stink Bug
+Violin Beetle
 Tiger Beetle
-Jewel Beetle
-Violin Beetle ^2
-Citrus Long-horned Beetle
-Rosalia Batesi Beetle
-Blue Weevil Beetle
-Earth-boring Dung Beetle
-Scarab Beetle
-Drone Beetle
-Goliath Beetle ^0.5
-Saw Stag ^0.4
-Miyama Stag ^ 0.3
-Giant Stag ^0.5
-Rainbow Stag
-Cyclommatus Stag ^0.3
-Giraffe Stag ^0.5
-Horned Dynastid
-Horned Atlas ^0.1
-Horned Elephant ^0.2
-Horned Hercules ^0.3
+Citrus Long-Horned Beetle
 Walking Stick
-Walking Leaf
 Bagworm ^2
 Ant ^2
 Hermit Crab ^2
 Wharf Roach
 Fly
-Mosquito
 Flea
 Snail
+Pill Bug ^2
+Centipede ^0.1
 Spider ^0.2
 Scorpion ^0.5
-Firefly ^0.5
-Walker Cicada ^0.5
 
 none^4
-Tiger Butterfly ^2
-Common Bluebottle
-Paper Kite Butterfly ^2
-Great Purple Emperor
-Emperor Butterfly
-Agrias Butterfly
-Rajah Brooke's Birdwing
+Common Butterfly ^2
+Yellow Butterfly ^2
+Paper Kite Butterfly
+Monarch Butterfly
 Moth
-Atlas Moth
-Madagascan Sunset Moth
 Long Locust
-Grasshopper
+Migratory Locust
+Rice Grasshopper
+Cricket
+Bell Cricket
 Mantis
 Orchid Mantis
-Honeybee
 Wasp
-Brown Cicada
-Robust Cicada
-Evening Cicada
-Cicada Shell
+Red Dragonfly
 Darner Dragonfly
 Banded Dragonfly
-Pondskater
-Diving Beetle
-Giant Water Bug
 Stinkbug
 Man-Faced Stink Bug
-Tiger Beetle
-Jewel Beetle
 Violin Beetle
+Tiger Beetle
 Citrus Long-Horned Beetle
-Rosalia Batesi Beetle
-Blue Weevil Beetle
-Earth-boring Dung Beetle
-Scarab Beetle
-Drone Beetle
-Goliath Beetle
-Saw Stag
-Miyama Stag ^ 0.5
-Giant Stag
-Rainbow Stag
-Cyclommatus Stag ^0.5
-Girrafe Stag
-Horned Dynastid
-Horned Atlas ^0.5
-Horned Elephant ^0.5
-Horned Hercules ^0.5
 Walking Stick
-Walking Leaf
 Bagworm
 Ant
 Hermit Crab
 Wharf Roach
 Fly
-Mosquito
 Flea
 Snail
+Pill Bug
+Centipede ^0.5
 Spider ^0.5
 Scorpion
-Firefly ^0.2
-Walker Cicada ^0.2
 
-bugTiger Butterfly ^0.5
-Common Bluebottle
-Paper Kite Butterfly ^0.5
-Great Purple Emperor
-Emperor Butterfly
-Agrias Butterfly
-Rajah Brooke's Birdwing
+Common Butterfly ^0.5
+Yellow Butterfly ^0.5
+Paper Kite Butterfly
+Monarch Butterfly
 Moth
-Atlas Moth
-Madagascan Sunset Moth
 Long Locust
-Grasshopper
+Migratory Locust
+Rice Grasshopper
+Cricket
+Bell Cricket
 Mantis
-Orchid Mantis
-Honeybee
+Orchid Mantis ^2
 Wasp
-Brown Cicada
-Robust Cicada
-Evening Cicada
-Cicada Shell
+Red Dragonfly
 Darner Dragonfly
 Banded Dragonfly
-Pondskater
-Diving Beetle
-Giant Water Bug
 Stinkbug
 Man-Faced Stink Bug
-Tiger Beetle
-Jewel Beetle
 Violin Beetle
+Tiger Beetle
 Citrus Long-Horned Beetle
-Rosalia Batesi Beetle
-Blue Weevil Beetle
-Earth-boring Dung Beetle
-Scarab Beetle
-Drone Beetle
-Goliath Beetle
-Saw Stag
-Miyama Stag ^2
-Giant Stag
-Rainbow Stag
-Cyclommatus Stag ^2
-Giraffe Stag
-Horned Dynastid
-Horned Atlas ^2
-Horned Elephant ^2
-Horned Hercules ^2
 Walking Stick
-Walking Leaf
-Bagworm
-Ant
+Bagworm ^0.5
+Ant ^0.5
 Hermit Crab
 Wharf Roach
 Fly
-Mosquito
 Flea
 Snail
+Pill Bug
+Centipede ^2
 Spider ^2
 Scorpion ^2
 TWO BUGS (next 2 rolls)
-Firefly ^2
-Walker Cicada ^2
