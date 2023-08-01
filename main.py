@@ -434,6 +434,7 @@ def standard_activity_roll(tool_id):
 
 def dice_gamble_roll():
     dice_max = config.getint("GameCorner", "standard_dice_max")
+    enable_modifier = config.getboolean("GameCorner", "enable_modifier")
     gamble_value_ranges = process_list_of_ranges(config.get("GameCorner", "dice_value_ranges"))
     gamble_reward_ranges = process_list_of_ranges(config.get("GameCorner", "dice_reward_ranges"))
     sheet_num, pos = find_position_of_item("gct")
@@ -443,9 +444,12 @@ def dice_gamble_roll():
         member_row = get_input_member_row("Input Discord ID of gamer (\"end\" to quit): ")
         if member_row == "end":
             return
-        modifier = get_amount_from_input("Input modifier value: ")
-        if modifier == "end":
-            continue
+        if enable_modifier:
+            modifier = get_amount_from_input("Input modifier value: ", True)
+            if modifier == "end":
+                continue
+        else:
+            modifier = 0
         dice_roll = random.randint(1, dice_max)
         dice_roll_mod = max(1, dice_roll + modifier)
         reward = "ERROR"
