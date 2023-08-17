@@ -1,6 +1,8 @@
 import os.path
 import sys
 import random
+import time
+
 import gspread
 import constants
 import re
@@ -386,7 +388,6 @@ def get_amount_from_input(message, allow_zero=False):
             return amount
 
 
-# Perform a standard activity roll
 def standard_activity_roll(tool_id):
     loot_table = WeightedTable(f"rolls/tools/{constants.TOOL_FILE_NAMES[tool_id]}")
     extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
@@ -683,6 +684,39 @@ def link_loop():
         print(f"{member_row[nick_column]}'s URL is {member_row[sheet_link_column]}")
 
 
+def fix_misspelling_in_sheet():
+    print("This is a dangerous function, only use if neccessary")
+    worksheet_of_cell = input("What is the name of the worksheet? (case sensitive)")
+    cell = input("Select cell to fix (e.g. A5)")
+    current_word = input("What does the cell currently say? (case sensitive) (enter UPDATE_ANYWAYS to change "
+                         "regardless of what the cell says)")
+    new_word = input("What to change the word to?")
+    for line in mastersheet_data[1:]:
+        ms = gc.open_by_url(line[sheet_link_column])
+        done = False
+        wait = 3
+        while not done:
+            try:
+                mws = ms.worksheet(worksheet_of_cell)
+                if current_word != "UPDATE_ANYWAYS":
+                    item_cell = mws.acell(cell).value
+                if current_word == "UPDATE_ANYWAYS" or item_cell == current_word:
+                    mws.update_acell(cell, new_word)
+                    print(f"Updated cell for {line[nick_column]}")
+                else:
+                    print(f"Cell is {item_cell}, didn't update for {line[nick_column]}")
+                done = True
+                wait = 3
+            except gspread.exceptions.APIError:
+                print("Waiting for new quota...")
+                time.sleep(wait)
+                if wait < 10:
+                    wait += 1
+
+
+    print("Done!")
+
+
 def main():
     end = False
     while not end:
@@ -717,6 +751,8 @@ def main():
             link_loop()
         elif option == "end":
             end = True
+        elif option == "fix_dangerous":
+            fix_misspelling_in_sheet()
         else:
             print(f"{option} is not a valid option")
     print("Good Bye!")
