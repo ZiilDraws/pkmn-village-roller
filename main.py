@@ -408,9 +408,11 @@ def standard_activity_roll(tool_id):
                 print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
                 continue
             elif sheet_num == "n":
-                print(f"{member_row[nick_column]} got no item with their {member_row[tool_column]} \
-                {constants.TOOL_IDS[tool_id]}.")
+                print(f"{member_row[nick_column]} got no item with their {member_row[tool_column]} "
+                      f"{constants.TOOL_IDS[tool_id]}.")
                 print(f"Oof, no item :(")
+                if roll_messages_to_clipboard:
+                    clipboard.copy("Oof, no item :(")
                 if write_misses_to_file:
                     log_addition(member_row)
                 continue
