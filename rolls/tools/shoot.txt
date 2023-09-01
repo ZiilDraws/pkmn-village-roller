@@ -1,4 +1,4 @@
-Oops, you missed!^8
+none^8
 1 money^4
 10 money^3
 100 money^2
@@ -33,7 +33,7 @@ x3 Rose Seeds
 x3 Tulip Seeds
 x3 Windflower Seeds
 
-Oops, you missed!^4
+none^4
 10 money^2
 100 money
 500 money^0.5

@@ -436,6 +436,7 @@ def standard_activity_roll(tool_id):
 
 
 def dice_gamble_roll():
+    guessing_game = config.getboolean("GameCorner", "guessing_game")
     dice_max = config.getint("GameCorner", "standard_dice_max")
     enable_modifier = config.getboolean("GameCorner", "enable_modifier")
     gamble_value_ranges = process_list_of_ranges(config.get("GameCorner", "dice_value_ranges"))
@@ -447,19 +448,26 @@ def dice_gamble_roll():
         member_row = get_input_member_row("Input Discord ID of gamer (\"end\" to quit): ")
         if member_row == "end":
             return
-        if enable_modifier:
+        if guessing_game:
+            guess = get_amount_from_input("Input number guess: ", True)
+            if guess == "end":
+                continue
+        elif enable_modifier:
             modifier = get_amount_from_input("Input modifier value: ", True)
             if modifier == "end":
                 continue
         else:
             modifier = 0
         dice_roll = random.randint(1, dice_max)
-        dice_roll_mod = max(1, dice_roll + modifier)
+        dice_roll_mod = max(1, dice_roll + modifier) if not guessing_game else abs(dice_roll - guess)
         reward = "ERROR"
         for index, value_range in enumerate(gamble_value_ranges):
             if value_range[0] <= dice_roll_mod <= value_range[1]:
                 reward = random.randint(gamble_reward_ranges[index][0], gamble_reward_ranges[index][1])
-        print(f"{member_row[nick_column]} won {reward} GCT with a roll of {dice_roll_mod} ({dice_roll}+{modifier})")
+        if not guessing_game:
+            print(f"{member_row[nick_column]} won {reward} GCT with a roll of {dice_roll_mod} ({dice_roll}+{modifier})")
+        else:
+            print(f"{member_row[nick_column]} won {reward} GCT with a distance of {dice_roll_mod} ({dice_roll})")
 
         if check_if_update_sheet(True) and reward != "ERROR":
             new_val, old_val, sheet_name = change_value_of_cell(reward, int(sheet_num), pos,
@@ -723,7 +731,7 @@ def main():
         option = input("""What do you wish to do? 
             -- type one of the following options
             -- "tool" for standard tool activity rolls
-            -- "gamble" for dice game corner roll with modifier
+            -- "gamble" for game corner functionality
             -- "roll" for different loot rolls
             -- "trade" for player trades/shop trades
             -- "shop" for just shop trades
