@@ -303,7 +303,7 @@ Coelacanth, 2, F27
 Crawfish, 2, F28
 Crucian Carp, 2, F29
 Dace, 2, F30
-Dap, 2, F31
+Dab, 2, F31
 Dorado, 2, F32
 Football Fish, 2, F33
 Freshwater Goby, 2, F34
@@ -340,7 +340,7 @@ Rainbowfish, 2, F64
 Ranchu Goldfish, 2, F65
 Ray, 2, F66
 Red Snapper, 2, F67
-Ribbot Eel, 2, F68
+Ribbon Eel, 2, F68
 Saddled Bichir, 2, F69
 Salmon, 2, F70
 Saw Shark, 2, F71
