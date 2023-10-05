@@ -22,9 +22,9 @@ scope = ["https://spreadsheets.google.com/feeds",
 
 try:
     credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        'env/credentials.json', scope)
+        'persistent/credentials.json', scope)
 except:
-    print("An error with the credentials.json file in the env folder! Is it missing? Have you followed the tutorial "
+    print("An error with the credentials.json file in the 'persistent' folder! Is it missing? Have you followed the tutorial "
           "at https://github.com/ZiilDraws/pkmn-village-roller/blob/main/README.md?")
     input("")
     sys.exit(0)
@@ -38,6 +38,9 @@ worksheet = spreadsheet.get_worksheet_by_id(constants.MASTERSHEET_WORKSHEET_ID)
 
 # Get all values from the worksheet
 mastersheet_data = worksheet.get_all_values()
+if len(mastersheet_data) <= 0:
+    print("Failed to load mastersheet data, please restart the application")
+    sys.exit(0)
 
 
 class WeightedTable:
@@ -436,11 +439,13 @@ def standard_activity_roll(tool_id):
 
 
 def dice_gamble_roll():
-    guessing_game = config.getboolean("GameCorner", "guessing_game")
-    dice_max = config.getint("GameCorner", "standard_dice_max")
-    enable_modifier = config.getboolean("GameCorner", "enable_modifier")
-    gamble_value_ranges = process_list_of_ranges(config.get("GameCorner", "dice_value_ranges"))
-    gamble_reward_ranges = process_list_of_ranges(config.get("GameCorner", "dice_reward_ranges"))
+    rollercfg = configparser.ConfigParser()
+    rollercfg.read('rolls.ini')
+    guessing_game = rollercfg.getboolean("GameCorner", "guessing_game")
+    dice_max = rollercfg.getint("GameCorner", "standard_dice_max")
+    enable_modifier = rollercfg.getboolean("GameCorner", "enable_modifier")
+    gamble_value_ranges = process_list_of_ranges(rollercfg.get("GameCorner", "dice_value_ranges"))
+    gamble_reward_ranges = process_list_of_ranges(rollercfg.get("GameCorner", "dice_reward_ranges"))
     sheet_num, pos = find_position_of_item("gct")
     member_row = 0
     while member_row != "end":
@@ -767,7 +772,7 @@ def main():
 
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('persistent/usersettings.ini')
 
 auto_add_to_inventory = config.getboolean('Settings', 'auto_add_to_inventory')
 auto_deny_updating_sheet = config.getboolean('Settings', 'auto_deny_updating_sheet')

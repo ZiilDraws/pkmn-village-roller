@@ -2,7 +2,7 @@ none^8
 1 money^4
 10 money^3
 100 money^2
-1,000 money^0.1
+1000 money^0.1
 Basic Ticket
 Elemental Ticket
 Personalized Ticket
