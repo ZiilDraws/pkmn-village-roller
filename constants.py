@@ -41,6 +41,10 @@ GAMBLE_PROMPT_FILE_NAME = "gamble.txt"
 
 ITEM_LOOT_ROLL_FOLDER = "rolls/items/"
 
+SEED_TYPES = ["cosmos", "hyacinth", "lily", "mum", "pansy", "rose", "tulip", "windflower"]
+SEED_COLOURS = ["red", "white", "yellow"]
+SEED_WIND_COLOURS = ["red", "orange", "white"]
+
 QUEST_ROLL_FOLDER = "rolls/quest/"
 QUEST_FILE_NAMES = ["quest_normal.txt", "quest_oos.txt"]
 QUEST_CURRENCY_AMOUNT = 100

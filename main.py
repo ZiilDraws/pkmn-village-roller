@@ -636,6 +636,47 @@ def trade_shop_loop(only_shop=False):
             print("Trade complete!")
 
 
+def plant_seeds(): # Not Used for Now
+    while member_row != "end":
+        print("")
+        member_row = get_input_member_row("Input Discord ID to roll (\"end\" to quit): ")
+        if member_row == "end":
+            return
+        seedtxt = "Select seed ("
+        for seedtxt in constants.SEED_TYPES:
+            seedtxt += (seedtxt + " / ")
+        seedtxt += "end): "
+        while True:
+            selected_seed = input(seedtxt).lower().strip()
+            if selected_seed == "end":
+                continue
+            if selected_seed not in constants.SEED_TYPES:
+                print(f"{selected_seed} is not a valid option.")
+        amount = get_amount_from_input(f"Input amount of {selected_seed} seeds to grow (e.g. 5, 32 or -300): ")
+        if amount == "end":
+            continue
+        if amount is None or amount <= 0:
+            print(f"Input is less than 1 or not an integer.")
+            print(member_row[sheet_link_column])
+            continue
+
+        if sheet_num is None:
+            print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+            continue
+        elif sheet_num == "er":
+            amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+        print(f"{member_row[nick_column]} got {get_article(item) if amount == 1 else amount} {item}!")
+        if check_if_update_sheet():
+            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                member_row[sheet_link_column],
+                                                                item
+                                                                )
+            log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+        else:
+            log_addition(member_row, item, amount, "Autoadd Disabled")
+        print("")
+
+
 def quest_reward():
     extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
     quest_normal = WeightedTable(os.path.join(constants.QUEST_ROLL_FOLDER, constants.QUEST_FILE_NAMES[0]))
