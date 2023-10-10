@@ -1,0 +1,68 @@
+Oops, you scared it away. :(^8
+Common Butterfly ^5
+Paper Kite Butterfly
+Emperor Butterfly
+Rajah Brooke's Birdwing
+Moth
+Wasp
+Damselfly ^2
+Mole Cricket
+Jewel Beetle
+Citrus Long-Horned Beetle
+Dung Beetle
+Bagworm ^2
+Ant ^2
+Hermit Crab ^2
+Wharf Roach
+Fly
+Snail
+Pill Bug ^2
+Centipede ^0.1
+Spider ^0.2
+Tarantula ^0.5
+
+Oops, you scared it away. :(^4
+Common Butterfly ^2
+Paper Kite Butterfly
+Emperor Butterfly
+Rajah Brooke's Birdwing
+Moth
+Wasp
+Damselfly 
+Mole Cricket
+Jewel Beetle
+Citrus Long-Horned Beetle
+Dung Beetle
+Bagworm 
+Ant 
+Hermit Crab 
+Wharf Roach
+Fly
+Snail
+Pill Bug 
+Centipede ^0.5
+Spider ^0.5
+Tarantula 
+
+Common Butterfly ^0.5
+Paper Kite Butterfly
+Emperor Butterfly
+Rajah Brooke's Birdwing
+Moth
+Wasp
+Damselfly 
+Mole Cricket
+Jewel Beetle
+Citrus Long-Horned Beetle
+Dung Beetle
+Bagworm ^0.5
+Ant ^0.5
+Hermit Crab 
+Wharf Roach
+Fly
+Snail
+Pill Bug 
+Centipede ^2
+Spider ^2
+Tarantula ^2
+TWO BUGS! (next two rolls)

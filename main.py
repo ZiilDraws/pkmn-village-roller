@@ -49,7 +49,7 @@ class WeightedTable:
         self.load_tables(filename)
 
     def load_tables(self, filename):
-        with open(os.path.join(Current_Path, filename), 'r') as file:
+        with open(filename, 'r') as file:
             current_table = []
 
             for line in file:
@@ -190,9 +190,11 @@ def change_value_of_cell(dx_value, worksheet_id, position, url, item):
     member_worksheet = member_sheet.get_worksheet(worksheet_id)
     old_value = member_worksheet.acell(position).value
     prefix = standard_prefix(item)
+    item = item.strip().lower()
     if prefix == "x":
-        item_cell = member_worksheet.acell(decrement_letter(position)).value
-        if item_cell.strip().lower() != item.strip().lower():
+        item_cell = member_worksheet.acell(decrement_letter(position)).value.strip().lower()
+        if item_cell != item and \
+                (item_cell != item + "s" and item_cell != item[0:-1]):
             print(f"The cell to the left of this cell is {item_cell} instead of {item}.")
             cont = input("Are you sure you wish to continue? (y/n): ")
             if cont.lower() != "y":
@@ -251,10 +253,21 @@ def write_to_log(line):
         write_to_log(line)
 
 
-def find_position_of_item(item_name):
+def find_position_of_item(item_name_in):
+    item_name = item_name_in.lower().strip()
     for item in item_positions:
-        if item[0] == item_name.lower():
+        if item[0] == item_name:
             return item[1], item[2]
+    if item_name.endswith("s"):
+        item_name = item_name[0:-1]
+        for item in item_positions:
+            if item[0] == item_name:
+                return item[1], item[2]
+    else:
+        item_name += "s"
+        for item in item_positions:
+            if item[0] == item_name:
+                return item[1], item[2]
     return None, None
 
 
@@ -262,11 +275,15 @@ def get_tool_id():
     tool_message = "Select tool ("
     for tool in constants.TOOL_WORKNAMES:
         tool_message += (tool + " / ")
-    tool_message = tool_message[0:len(tool_message) - 3]
-    tool_message += "): "
+    tool_message += "end): "
     while True:
-        selected_tool = input(tool_message)
-        tool_id = constants.TOOL_WORKNAMES.index(selected_tool)
+        selected_tool = input(tool_message).lower().strip()
+        if selected_tool == "end":
+            return -1
+        try:
+            tool_id = constants.TOOL_WORKNAMES.index(selected_tool)
+        except ValueError:
+            tool_id = -1
         if tool_id != -1:
             return tool_id
         else:
@@ -391,8 +408,27 @@ def get_amount_from_input(message, allow_zero=False):
             return amount
 
 
+def get_tool_path(tool_id):
+    if tool_id >= 2:
+        return os.path.join(Current_Path, f"rolls/tools/{constants.TOOL_FILE_NAMES[tool_id]}")
+
+    config.read('rolls.ini')
+    season = config.get('ToolRolls', 'season').lower()
+    if season == "fall":
+        season = "autumn"
+
+    path = os.path.join(Current_Path, "rolls\\tools")
+    path = os.path.join(path, season)
+    if not os.path.isdir(path):
+        print(f"{season} from rolls.ini does not exist as a folder. Is it a correct season?")
+        input()
+        sys.exit(0)
+
+    return os.path.join(path, f"{constants.TOOL_FILE_NAMES[tool_id]}")
+
+
 def standard_activity_roll(tool_id):
-    loot_table = WeightedTable(f"rolls/tools/{constants.TOOL_FILE_NAMES[tool_id]}")
+    loot_table = WeightedTable(get_tool_path(tool_id))
     extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
     tool_column = find_tool_column(tool_id)
     member_row = 0
@@ -747,6 +783,8 @@ def main():
             """).lower()
         if option == "tool":
             tool_id = get_tool_id()
+            if tool_id == -1:
+                continue
             standard_activity_roll(tool_id)
         elif option == "gamble":
             dice_gamble_roll()

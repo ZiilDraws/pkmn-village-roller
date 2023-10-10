@@ -1,0 +1,122 @@
+Oops, nothing is biting. :(^8
+Pale Chub
+Crucian Carp
+Dace
+Carp
+Koi
+Goldfish
+Pop-eyed Goldfish
+Ranchu Goldfish
+Killifish
+Crawfish
+Snapping Turtle
+Tadpole
+Freshwater Goby
+Loach
+Bluegill
+Black Bass ^4
+Cherry Salmon
+Char
+Golden Trout ^0.3
+Guppy
+Neon Tetra
+Sea Horse
+Clown Fish
+Surgeonfish
+Butterfly Fish
+Zebra Turkeyfish
+Anchovy
+Horse Mackerel
+Barred Knifejaw
+Sea Bass ^5
+Red Snapper 
+Dab ^2
+Olive Flounder 
+Squid
+Tuna 0.4
+Blue Marlin ^0.3
+Oarfish ^0.2
+Barreleye ^0.1
+Coelacanth ^0.1
+
+Oops, nothing is biting. :(^4
+Pale Chub
+Crucian Carp
+Dace
+Carp
+Koi
+Goldfish
+Pop-eyed Goldfish
+Ranchu Goldfish
+Killifish
+Crawfish
+Snapping Turtle
+Tadpole
+Freshwater Goby
+Loach
+Bluegill
+Black Bass ^2
+Cherry Salmon
+Char
+Golden Trout 
+Guppy
+Neon Tetra
+Sea Horse
+Clown Fish
+Surgeonfish
+Butterfly Fish
+Zebra Turkeyfish
+Anchovy
+Horse Mackerel
+Barred Knifejaw
+Sea Bass ^2
+Red Snapper 
+Dab ^2
+Olive Flounder 
+Squid
+Tuna 
+Blue Marlin 
+Oarfish ^0.5
+Barreleye ^0.5
+Coelacanth ^0.5
+
+Pale Chub
+Crucian Carp
+Dace
+Carp
+Koi
+Goldfish
+Pop-eyed Goldfish
+Ranchu Goldfish
+Killifish
+Crawfish
+Snapping Turtle
+Tadpole
+Freshwater Goby
+Loach
+Bluegill
+Black Bass ^0.5
+Cherry Salmon
+Char
+Golden Trout 
+Guppy
+Neon Tetra
+Sea Horse
+Clown Fish
+Surgeonfish
+Butterfly Fish
+Zebra Turkeyfish
+Anchovy
+Horse Mackerel
+Barred Knifejaw
+Sea Bass ^0.5
+Red Snapper 
+Dab ^2
+Olive Flounder 
+Squid
+Tuna 
+Blue Marlin 
+Oarfish ^2
+Barreleye ^2
+Coelacanth ^2
+TWO FISH! (next 2 rolls)

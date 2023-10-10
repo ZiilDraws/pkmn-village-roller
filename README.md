@@ -42,11 +42,13 @@ In the "Add Key/Create new key" section, select the JSON key type and click on t
 
 A JSON file containing your credentials will be downloaded to your computer.
 
-Rename this file to "credentials" and place it in a folder called "env" next to the files from this program.
+Rename this file to "credentials" and place it in a folder called "persistent" next to the files from this program.
 
 If you have file extensions enabled, make sure the credentials file stays as a .json
 
 ### 5. Share the Google Sheets folder:
+Either do this step or send the service account email to me, I can fix it (Ziil).
+
 Open sharing for the Drive folder containing all member sheets.
 
 Enter the email address associated with the service account you created in step 4. (If you have lost this one, you can find it at https://console.cloud.google.com/iam-admin/serviceaccounts)

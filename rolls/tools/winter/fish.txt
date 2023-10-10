@@ -1,0 +1,98 @@
+Oops, nothing is biting. :(^8
+Bitterling
+Pale Chub
+Crucian Carp
+Dace
+Carp
+Koi
+Goldfish
+Pop-eyed Goldfish
+Ranchu Goldfish
+Freshwater Goby
+Bluegill
+Yellow Perch
+Black Bass ^4
+Pond Smelt
+Stringfish
+Sturgeon
+Sea Butterfly
+Blowfish
+Anchovy
+Horse Mackerel
+Sea Bass ^5
+Red Snapper 
+Dab ^2
+Olive Flounder 
+Squid
+Tuna
+Blue Marlin
+Football Fish
+Oarfish 
+Barreleye ^0.1
+Coelacanth ^0.1
+
+Oops, nothing is biting. :(^4
+Bitterling
+Pale Chub
+Crucian Carp
+Dace
+Carp
+Koi
+Goldfish
+Pop-eyed Goldfish
+Ranchu Goldfish
+Freshwater Goby
+Bluegill
+Yellow Perch
+Black Bass ^2
+Pond Smelt
+Stringfish
+Sturgeon
+Sea Butterfly
+Blowfish
+Anchovy
+Horse Mackerel
+Sea Bass ^2
+Red Snapper 
+Dab 
+Olive Flounder 
+Squid
+Tuna
+Blue Marlin
+Football Fish
+Oarfish 
+Barreleye ^0.5
+Coelacanth ^0.5
+
+Bitterling
+Pale Chub
+Crucian Carp
+Dace
+Carp
+Koi
+Goldfish
+Pop-eyed Goldfish
+Ranchu Goldfish
+Freshwater Goby
+Bluegill
+Yellow Perch
+Black Bass ^0.5
+Pond Smelt
+Stringfish
+Sturgeon
+Sea Butterfly
+Blowfish
+Anchovy
+Horse Mackerel
+Sea Bass ^0.5
+Red Snapper 
+Dab 
+Olive Flounder 
+Squid
+Tuna
+Blue Marlin
+Football Fish
+Oarfish 
+Barreleye ^2
+Coelacanth ^2
+TWO FISH! (next 2 rolls)
