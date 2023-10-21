@@ -1,0 +1,125 @@
+Fish Bait, 1: manila clam, 5
+Mulch, 1: weeds, 5
+Hybrid Wand, 1: Magic-infused Stick, 1; hybrid berry, 1
+Shiny Wand, 1: Magic-infused Stick, 1; Shiny berry, 1
+Delta Wand, 1: Magic-infused Stick, 1; Delta berry, 1
+Mutant Wand, 1: Magic-infused Stick, 1; Mutant berry, 1
+Abomasite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Absolite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Aerodactylite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Aggronite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Alakazite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Altarianite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Ampharosite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Audinite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Banettite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Beedrillite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Blastoisinite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Blazikenite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Blue Orb, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Cameruptite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Charizardite X, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Charizardite Y, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Diancite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+DNA Splicers, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Galladitite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Garchompite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Gardevoirite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Gengarite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Glalitite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Green Orb, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Gyaradosite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Heracronite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Houndoominite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Kangaskhanite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Latiasite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Latiosite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Lopunnite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Lucarionite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Manectite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Mawilite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Medichamite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Metagrossite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Mewtwonite X, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Mewtwonite Y, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Pidgeotite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Pinsirite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Red Orb, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Sablenite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Salamencite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Sceptilite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Scizorite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Sharpedonite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Slowbronite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Steelixite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Swampertite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Tyranitarite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Ultra Prism, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Venusaurite, 1: Magic-infused Stone, 1; Evolution Stone, 1
+Alcremie Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Appletun Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Blastoise Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Butterfree Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Centiskorch Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Charizard Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Cinderace Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Coalossal Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Copperajah Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Corviknight Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Drednaw Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Duraludon Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Eevee Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Flapple Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Garbodor Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Gengar Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Grimmsnarl Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Hatterene Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Inteleon Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Kingler Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Lapras Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Machamp Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Melmetal Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Meowth Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Orbeetle Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Pikachu Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Rillaboom Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Sandaconda Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Snorlax Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Toxtricity Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Urshifu Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Venusaur Star, 1: Magic-infused Stone, 1; Form-change Stone, 1
+Aloraichium Z, 1: Magic-infused Stone, 1; TM, 1
+Buginium Z, 1: Magic-infused Stone, 1; TM, 1
+Darkinium Z, 1: Magic-infused Stone, 1; TM, 1
+Decidium Z, 1: Magic-infused Stone, 1; TM, 1
+Dragonium Z, 1: Magic-infused Stone, 1; TM, 1
+Eevium Z, 1: Magic-infused Stone, 1; TM, 1
+Electrium Z, 1: Magic-infused Stone, 1; TM, 1
+Fairium Z, 1: Magic-infused Stone, 1; TM, 1
+Fightinium Z, 1: Magic-infused Stone, 1; TM, 1
+Firium Z, 1: Magic-infused Stone, 1; TM, 1
+Flyinium Z, 1: Magic-infused Stone, 1; TM, 1
+Ghostium Z, 1: Magic-infused Stone, 1; TM, 1
+Grassium Z, 1: Magic-infused Stone, 1; TM, 1
+Groundium Z, 1: Magic-infused Stone, 1; TM, 1
+Icium Z, 1: Magic-infused Stone, 1; TM, 1
+Incinium Z, 1: Magic-infused Stone, 1; TM, 1
+Kommonium Z, 1: Magic-infused Stone, 1; TM, 1
+Lunalium Z, 1: Magic-infused Stone, 1; TM, 1
+Lycanium Z, 1: Magic-infused Stone, 1; TM, 1
+Marshadium Z, 1: Magic-infused Stone, 1; TM, 1
+Mewnium Z, 1: Magic-infused Stone, 1; TM, 1
+Mimikium Z, 1: Magic-infused Stone, 1; TM, 1
+Normalium Z, 1: Magic-infused Stone, 1; TM, 1
+Pikanium Z, 1: Magic-infused Stone, 1; TM, 1
+Pikashunium Z, 1: Magic-infused Stone, 1; TM, 1
+Poisonium Z, 1: Magic-infused Stone, 1; TM, 1
+Primarium Z, 1: Magic-infused Stone, 1; TM, 1
+Psychium Z, 1: Magic-infused Stone, 1; TM, 1
+Rockium Z, 1: Magic-infused Stone, 1; TM, 1
+Snorlium Z, 1: Magic-infused Stone, 1; TM, 1
+Solganium Z, 1: Magic-infused Stone, 1; TM, 1
+Steelium Z, 1: Magic-infused Stone, 1; TM, 1
+Tapunium Z, 1: Magic-infused Stone, 1; TM, 1
+Ultranecrozium Z, 1: Magic-infused Stone, 1; TM, 1
+Waterium Z, 1: Magic-infused Stone, 1; TM, 1

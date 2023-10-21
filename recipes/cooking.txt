@@ -1,0 +1,29 @@
+Apple Tart, 1: Flour, 1; Sugar, 1; Apples, 3
+Baked Potatoes, 1: Potatoes, 2
+Bread, 1: Flour, 3
+Champiñones Al Ajillo, 1: Mushrooms, 4
+Cherry Tart, 1: Flour, 1; Sugar, 1; Cherries, 3
+Carrot Cake, 1: Flour, 1; Sugar, 1; Carrots, 1
+Clam Chowder, 1: Flour, 1; Manilla Clams, 3
+Coconut Pudding, 1: Sugar, 1; Coconuts, 3
+Cupcakes, 1: Flour, 1; Sugar, 1
+French Fries, 1: Potatoes, 3
+Frosted Pretzels, 1: Flour, 1; Sugar, 2
+Fruit Salad, 1: Apples, 1; Oranges, 1; Pears, 1; Peaches, 1; Cherries, 1
+Fruit-Topped Pancakes, 1: Flour, 2; Apples, 1; Oranges, 1; Pears, 1; Peaches, 1; Cherries, 1
+Gnocchi Di Patate, 1: Flour, 2; Potatoes, 3
+Gratin, 1: Flour, 3; Potatoes, 1
+Minestrone Soup, 1: Tomatoes, 2; Potatoes, 1; Carrots, 1
+Mushroom Crepe, 1: Flour, 2; Mushrooms, 2
+Orange Tart, 1: Flour, 1; Sugar, 1; Oranges, 3
+Peach Tart, 1: Flour, 1; Sugar, 1; Peaches, 3
+Pear Tart, 1: Flour, 1; Sugar, 1; Pears, 3
+Pickled Veggies, 1: Carrots, 1; Potatoes, 1; Tomatoes, 1; Pumpkins, 1
+Pizza, 1: Flour, 3; Tomatoes, 2
+Pumpkin Curry, 1: Flour, 3; Pumpkins, 3
+Pumpkin Pie, 1: Flour, 3; Sugar, 2; Pumpkins, 2
+Salad, 1: Tomatoes, 1; Potatoes, 1; Pumpkins, 1; Carrots, 1
+Spaghetti, 1: Flour, 3; Tomatoes, 1
+Thumbprint Jam Cookies, 1: Flour, 1; Sugar, 1
+Tomato Puree, 1: Tomatoes, 3
+Veggie Quiche, 1: Flour, 1; Potatoes, 1; Pumpkins, 1

@@ -1,4 +1,5 @@
 import os.path
+import string
 import sys
 import random
 import time
@@ -10,6 +11,7 @@ import configparser
 import clipboard
 from oauth2client.service_account import ServiceAccountCredentials
 from pyphonetics import Soundex
+from pokebase import move, type_
 
 if getattr(sys, 'frozen', False):
     Current_Path = os.path.dirname(sys.executable)
@@ -149,9 +151,9 @@ def standard_prefix(item):
     return "x"
 
 
-def check_if_update_sheet(deny_override=False):
+def check_if_update_sheet(deny_override=False, msg="Do you want to update sheet? (y/n): "):
     if not auto_deny_updating_sheet or deny_override:
-        if auto_add_to_inventory or input("Do you want to update sheet? (y/n): ").strip() == "y":
+        if auto_add_to_inventory or input(msg).strip() == "y":
             return True
     return False
 
@@ -232,6 +234,23 @@ def check_to_have_item(dx_value, worksheet_id, position, url):
         return False
 
 
+def check_to_have_item_known(item, amount, url):  # List of items with [item, amount]
+    sheet_num, pos = find_position_of_item(item)
+    if sheet_num is None:
+        print(f"{item} not found in item database!")
+        return False
+    return check_to_have_item(int(amount), int(sheet_num), pos, url)
+
+
+def find_recipe(filename, recipe):
+    with open(os.path.join(Current_Path, filename)) as file:
+        for line in file:
+            line = line.strip().lower()
+            if line.startswith(recipe.lower()):
+                return line
+    return None
+
+
 def log_addition(member_row, item="None", amount=0, old_val=0, new_val=0, position="XX", sheet="X"):
     line = [member_row[id_column], member_row[nick_column], item, amount,
             old_val, new_val, position, sheet, member_row[sheet_link_column]]
@@ -286,6 +305,25 @@ def get_tool_id():
             tool_id = -1
         if tool_id != -1:
             return tool_id
+        else:
+            print(f"{selected_tool} is not a valid option.")
+
+
+def get_crafting_file():
+    tool_message = "Select crafting mode ("
+    for tool in constants.RECIPE_NAMES:
+        tool_message += (tool + " / ")
+    tool_message += "end): "
+    while True:
+        selected_tool = input(tool_message).lower().strip()
+        if selected_tool == "end":
+            return -1
+        try:
+            tool_id = constants.TOOL_WORKNAMES.index(selected_tool)
+        except ValueError:
+            tool_id = -1
+        if tool_id != -1:
+            return constants.RECIPE_FILES[tool_id]
         else:
             print(f"{selected_tool} is not a valid option.")
 
@@ -345,6 +383,14 @@ def get_txt_files(folder):
         if file.endswith(".txt"):
             txt_files.append(file)
     return txt_files
+
+
+def add_item(item, amount, member_row):
+    item = item.strip()
+    sheet_num, pos = find_position_of_item(item)
+    new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos, member_row[sheet_link_column],
+                                                        item)
+    log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
 
 
 def get_item_roll_file(txt_files):
@@ -412,7 +458,7 @@ def get_tool_path(tool_id):
     if tool_id >= 2:
         return os.path.join(Current_Path, f"rolls/tools/{constants.TOOL_FILE_NAMES[tool_id]}")
 
-    config.read('rolls.ini')
+    config.read('settings.ini')
     season = config.get('ToolRolls', 'season').lower()
     if season == "fall":
         season = "autumn"
@@ -420,11 +466,101 @@ def get_tool_path(tool_id):
     path = os.path.join(Current_Path, "rolls\\tools")
     path = os.path.join(path, season)
     if not os.path.isdir(path):
-        print(f"{season} from rolls.ini does not exist as a folder. Is it a correct season?")
+        print(f"{season} from settings.ini does not exist as a folder. Is it a correct season?")
         input()
         sys.exit(0)
 
     return os.path.join(path, f"{constants.TOOL_FILE_NAMES[tool_id]}")
+
+
+def read_battle_form(msg):
+    moves = ["", "", ""]
+    streak = re.match("(current winning streak:)\s*(\d*).*", input(msg).strip().lower()).group(2)
+    if streak is None or streak == "":
+        streak = 0
+    while True:
+        inline = input().strip().lower()
+        if inline == "end":
+            print("\"end\" recieved, ending battle.")
+            return "end"
+        elif inline.startswith("pkmn name:"):
+            name = re.match("(pkmn name:)\s*(.+)", inline).group(2)
+            name = string.capwords(name)
+        elif inline.startswith("pkmn ref:"):
+            ref = re.match("(pkmn ref:)\s*(.+)", inline).group(2)
+        elif inline.startswith("pkmn type:"):
+            up_types = re.match("(pkmn type:)\s*(.+)", inline).group(2)
+            ptypes = re.split(r"[, /]+", up_types)
+            ptypes = [ptyp for ptyp in ptypes if ptyp]
+        elif inline.startswith("pkmn level:"):
+            level = re.match("(pkmn level:)\s*(\d+)", inline).group(2)
+        elif inline.startswith("move 1:"):
+            moves[0] = re.match("(move 1:)\s*(.+)", inline).group(2)
+            moves[0] = string.capwords(moves[0])
+        elif inline.startswith("move 2:"):
+            moves[1] = re.match("(move 2:)\s*(.+)", inline).group(2)
+            moves[1] = string.capwords(moves[1])
+        elif inline.startswith("move 3:"):
+            moves[2] = re.match("(move 3:)\s*(.+)", inline).group(2)
+            moves[2] = string.capwords(moves[2])
+            break
+    return name, int(streak), ref, ptypes, level, moves
+
+
+def get_move_stats(move_name):
+    try:
+        cr_move = move(move_name.replace(" ", "-").lower())
+        if cr_move.power is None:
+            power = 0
+        else:
+            power = cr_move.power
+        if cr_move.accuracy is None:
+            acc = 100
+        else:
+            acc = cr_move.accuracy
+        return [move_name, power, cr_move.type.name, acc]
+    except AttributeError:
+        return None
+
+
+def check_multiplier(at_type, def_type):
+    at_ind = constants.POKEMON_TYPES.index(at_type)
+    def_ind = constants.POKEMON_TYPES.index(def_type)
+    return constants.TYPE_DAMAGE_ARRAY[at_ind][def_ind]
+
+
+def check_types(types):
+    for i in range(len(types)):
+        complete = False
+        while not complete:
+            try:
+                constants.POKEMON_TYPES.index(types[i])
+                complete = True
+            except:
+                types[i] = input(f"{types[i]} is not a valid type, enter type now: ").strip().lower()
+    return types
+
+
+def calc_damage(level, move_stats, att_types, def_types): # [move_name, cr_move.power, cr_move.type.name, cr_move.accuracy]
+    battle_config = configparser.ConfigParser()
+    battle_config.read('settings.ini')
+    if battle_config.getboolean("Battle", "enable_accuracy"):
+        if random.randint(1, 100) > int(move_stats[3]):
+            return ["miss", False]
+    if int(move_stats[1]) <= 0:
+        return [0, False]
+    stab = 1.5 if move_stats[2] in att_types else 1
+    mult = 1
+    for ptype in def_types:
+        mult *= check_multiplier(move_stats[2], ptype)
+    damage = (int(level) * 2) / 5 + 2
+    damage = damage * int(move_stats[1]) / 50 + 2
+    damage *= stab * mult
+    damage *= 1 - ((1 - battle_config.getfloat("Battle", "damage_variance")) * random.random())
+    crit = random.random() <= battle_config.getfloat("Battle", "crit_probability")
+    damage *= battle_config.getfloat("Battle", "crit_multiplier") if crit else 1
+    damage = round(damage)
+    return [damage, crit]
 
 
 def standard_activity_roll(tool_id):
@@ -476,7 +612,7 @@ def standard_activity_roll(tool_id):
 
 def dice_gamble_roll():
     rollercfg = configparser.ConfigParser()
-    rollercfg.read('rolls.ini')
+    rollercfg.read('settings.ini')
     guessing_game = rollercfg.getboolean("GameCorner", "guessing_game")
     dice_max = rollercfg.getint("GameCorner", "standard_dice_max")
     enable_modifier = rollercfg.getboolean("GameCorner", "enable_modifier")
@@ -636,45 +772,211 @@ def trade_shop_loop(only_shop=False):
             print("Trade complete!")
 
 
-def plant_seeds(): # Not Used for Now
+def crafting_recipe():
+    crafting_file = get_crafting_file()
+    member_row = 0
     while member_row != "end":
         print("")
-        member_row = get_input_member_row("Input Discord ID to roll (\"end\" to quit): ")
+        member_row = get_input_member_row("Input Discord ID of gamer (\"end\" to quit): ")
         if member_row == "end":
             return
-        seedtxt = "Select seed ("
-        for seedtxt in constants.SEED_TYPES:
-            seedtxt += (seedtxt + " / ")
-        seedtxt += "end): "
-        while True:
-            selected_seed = input(seedtxt).lower().strip()
-            if selected_seed == "end":
-                continue
-            if selected_seed not in constants.SEED_TYPES:
-                print(f"{selected_seed} is not a valid option.")
-        amount = get_amount_from_input(f"Input amount of {selected_seed} seeds to grow (e.g. 5, 32 or -300): ")
-        if amount == "end":
+        recipe = input("Enter name of thing to craft (\"end\" to quit): ").strip().lower()
+        if recipe == "end":
+            return
+        recipe_row = find_recipe(crafting_file, recipe)
+        if recipe_row is None:
+            print(f"Cooking recipe {recipe} not found. Is it spelled correctly?")
             continue
-        if amount is None or amount <= 0:
-            print(f"Input is less than 1 or not an integer.")
-            print(member_row[sheet_link_column])
+        recipe_sides = recipe_row.split(":")
+        if len(recipe_sides) != 2:
+            print(f"Recipe {recipe} is formatted incorrectly.")
             continue
+        amount = get_amount_from_input(f"How many {recipe} iterations does {member_row[nick_column]} want to craft? ", True)
+        if amount == "end" or amount == 0:
+            continue
+        recipe_amount = int(recipe_sides[0].split(",")[1].strip()) * amount
+        ingredients = recipe_sides[1].split(";")
+        able = True
+        for ingredient in ingredients:
+            inl = ingredient.split(",")
+            if not check_to_have_item_known(inl[0].strip(), int(inl[1].strip()) * amount, member_row[sheet_link_column]):
+                print(f"{member_row[nick_column]} does not have enough {inl[0].strip()}")
+                able = False
+        if able and check_if_update_sheet(msg="Do you wish to commence crafting? (y/n)"):
+            add_item(recipe, recipe_amount, member_row)
+            for ingredient in ingredients:
+                inl = ingredient.split(",")
+                add_item(inl[0], -int(inl[1]) * amount, member_row)
+            print(f"Finished crafting {recipe_amount} {recipe} for {member_row[nick_column]}!")
+        elif able:
+            print(f"{member_row[nick_column]} can craft {recipe_amount} {recipe}!")
 
-        if sheet_num is None:
-            print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
-            continue
-        elif sheet_num == "er":
-            amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
-        print(f"{member_row[nick_column]} got {get_article(item) if amount == 1 else amount} {item}!")
-        if check_if_update_sheet():
-            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
-                                                                member_row[sheet_link_column],
-                                                                item
-                                                                )
-            log_addition(member_row, item, amount, old_val, new_val, pos, sheet_name)
+
+def battle():
+    loot_table = WeightedTable(os.path.join(Current_Path, constants.BATTLE_REWARD_FILE))
+    extra_roller = WeightedTable(constants.EXTRA_FILE_NAME)
+    member_one_row = 0
+    while member_one_row != "end":
+        member_one_row = get_input_member_row(f"Input Discord ID for first battler (\"end\" to quit): ")
+        if member_one_row == "end":
+            return
+        print(f"Battler 1 is {member_one_row[nick_column]}.")
+
+        member_two_row = get_input_member_row(f"Input Discord ID for second battler (\"end\" to quit): ")
+        if member_two_row == "end":
+            return
+        print(f"Battler 2 is {member_two_row[nick_column]}.")
+
+        name_one, streak_one, ref_one, types_one, level_one, moves_one = read_battle_form(f"Input the battle form copy pasted from "
+                                                                     f"{member_one_row[nick_column]} (will stop when it"
+                                                                     f" sees the \"Move 3:\" line, \"end\" to quit): ")
+        print("Input complete, checking correctness...")
+        types_one = check_types(types_one)
+        move_stats_one = []
+        for crmove in moves_one:
+            move_stats = get_move_stats(crmove)
+            if move_stats is not None:
+                move_stats_one.append(move_stats)
+                continue
+            currentlen = len(move_stats_one)
+            while currentlen == len(move_stats_one):
+                print(f"Error finding move {crmove} in PokéAPI.")
+                new_in = input("Input name of move if misspelled, or enter stats in format(name, power, type, accuracy)"
+                               "e.g. \"(Icicle Crash, 85, Ice, 90)\": ").strip()
+                if new_in.startswith("("):
+                    new_in = new_in.replace("(", "").replace(")", "")
+                    new_in_list = new_in.split(",")
+                    try:
+                        move_stats_one.append([new_in_list[0].strip().lower(), int(new_in_list[1].strip()),
+                                              new_in_list[2].lower().strip(), int(new_in_list[3].strip())])
+                    except:
+                        print("Malformed move input.")
+                        continue
+                else:
+                    move_stats = get_move_stats(new_in.lower())
+                    if move_stats is not None:
+                        move_stats_one.append(move_stats)
+                        break
+
+        name_two, streak_two, ref_two, types_two, level_two, moves_two = read_battle_form(f"Input the battle form copy pasted from "
+                                                                     f"{member_two_row[nick_column]} (will stop when it"
+                                                                     f" sees the \"Move 3:\" line, \"end\" to quit): ")
+        print("Input complete, checking correctness...")
+        types_two = check_types(types_two)
+        move_stats_two = []
+        for crmove in moves_two:
+            move_stats = get_move_stats(crmove)
+            if move_stats is not None:
+                move_stats_two.append(move_stats)
+                continue
+            currentlen = len(move_stats_two)
+            while currentlen == len(move_stats_two):
+                print(f"Error finding move {crmove} in PokéAPI.")
+                new_in = input("Input name of move if misspelled, or enter stats in format(name, power, type, accuracy)"
+                               "e.g. \"(Icicle Crash, 85, Ice, 90)\": ").strip()
+                if new_in.startswith("("):
+                    new_in = new_in.replace("(", "").replace(")", "")
+                    new_in_list = new_in.split(",")
+                    try:
+                        move_stats_two.append([new_in_list[0].strip().lower(), int(new_in_list[1].strip()),
+                                              new_in_list[2].lower().strip(), int(new_in_list[3].strip())])
+                    except:
+                        print("Malformed move input.")
+                        continue
+                else:
+                    move_stats = get_move_stats(new_in.lower())
+                    if move_stats is not None:
+                        move_stats_two.append(move_stats)
+                        break
+
+        damage_one = [[], [], []]
+        damage_one_total = 0
+        damage_two = [[], [], []]
+        damage_two_total = 0
+        for i in range(3):
+            damage_one[i] = calc_damage(level_one, move_stats_one[i], types_one, types_two)
+            if damage_one[i][0] != "miss":
+                damage_one_total += damage_one[i][0]
+            damage_two[i] = calc_damage(level_two, move_stats_two[i], types_two, types_one)
+            if damage_two[i][0] != "miss":
+                damage_two_total += damage_two[i][0]
+
+        tie = damage_one_total == damage_two_total
+        player_one_wins = damage_one_total > damage_two_total
+
+        print(f"__**{name_one} vs {name_two}!**__")
+        print(f"{member_one_row[nick_column]}'s {name_one}:")
+        print(ref_one)
+        print(f"{member_two_row[nick_column]}'s {name_two}:")
+        print(ref_two + "\n")
+
+        for i in range(3):
+            print(f"__**Round #{i+1}:**__")
+            if damage_one[i][0] != "miss":
+                print(f"{name_one} used {move_stats_one[i][0]} and {'**CRIT**! They ' if damage_one[i][1] else ''}"
+                      f"dealt **{damage_one[i][0]}** damage!")
+            else:
+                print(f"{name_one} used {move_stats_one[i][0]} and missed.")
+            if damage_two[i][0] != "miss":
+                print(f"{name_two} used {move_stats_two[i][0]} and {'**CRIT**! They ' if damage_two[i][1] else ''}"
+                      f"dealt **{damage_two[i][0]}** damage!")
+            else:
+                print(f"{name_two} used {move_stats_two[i][0]} and missed.")
+            print("")
+
+        if tie:
+            print("***The battle was a tie!***")
+            print("Feel free to battle again!")
         else:
-            log_addition(member_row, item, amount, "Autoadd Disabled")
-        print("")
+            print(f"***{member_one_row[nick_column] if player_one_wins else member_two_row[nick_column]}'s "
+                  f"{name_one if player_one_wins else name_two} is the winner!***")
+            battle_config = configparser.ConfigParser()
+            battle_config.read(os.path.join(Current_Path, "settings.ini"))
+            battle_streak_ranges = process_list_of_ranges(battle_config.get("Battle", "battle_streak_ranges"))
+            for index, value_range in enumerate(battle_streak_ranges):
+                if player_one_wins:
+                    if value_range[0] <= streak_one <= value_range[1]:
+                        amount, item, sheet_num, pos = loot_roll(loot_table, index + 1)
+                        if sheet_num is None:
+                            print(f"{member_one_row[nick_column]} won {amount} {item}.")
+                            print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+                        elif sheet_num == "r":
+                            amount, item, sheet_num, pos = loot_roll(loot_table, 4)
+                        elif sheet_num == "er":
+                            amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+                        print(f"{member_one_row[nick_column]} wins {amount} {item}.")
+                        if check_if_update_sheet():
+                            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                                member_one_row[sheet_link_column],
+                                                                                item
+                                                                                )
+                            log_addition(member_one_row, item, amount, old_val, new_val, pos, sheet_name)
+                        else:
+                            log_addition(member_one_row, item, amount, "Autoadd Disabled")
+                        print(f"*{amount} {item} has been added to your inventory.*")
+                        break
+                else:
+                    if value_range[0] <= streak_two <= value_range[1]:
+                        amount, item, sheet_num, pos = loot_roll(loot_table, index + 1)
+                        if sheet_num is None:
+                            print(f"{member_two_row[nick_column]} won {amount} {item}.")
+                            print(f"m Cannot find {item}!!! MAKE SURE TO ADD MANUALLY !!!!!!!!!!!!!")
+                        elif sheet_num == "r":
+                            amount, item, sheet_num, pos = loot_roll(loot_table, 4)
+                        elif sheet_num == "er":
+                            amount, item, sheet_num, pos = loot_roll(extra_roller, int(pos))
+                        print(f"{member_two_row[nick_column]} wins {amount} {item}.")
+                        if check_if_update_sheet():
+                            new_val, old_val, sheet_name = change_value_of_cell(int(amount), int(sheet_num), pos,
+                                                                                member_two_row[sheet_link_column],
+                                                                                item
+                                                                                )
+                            log_addition(member_two_row, item, amount, old_val, new_val, pos, sheet_name)
+                        else:
+                            log_addition(member_two_row, item, amount, "Autoadd Disabled")
+                        print(f"*{amount} {item} has been added to your inventory.*")
+                        break
+
 
 
 def quest_reward():
@@ -816,9 +1118,11 @@ def main():
             -- "gamble" for game corner functionality
             -- "roll" for different loot rolls
             -- "trade" for player trades/shop trades
+            -- "craft" for recipes (crafting / cooking)
             -- "shop" for just shop trades
             -- "quest" to give quest rewards
             -- "modify" to add/remove items in specific inventories
+            -- "battle" to perform Pokémon battle
             -- "link" to get sheet URL 
             -- "end" to end program
             """).lower()
@@ -833,6 +1137,8 @@ def main():
             item_loot_roll()
         elif option == "quest":
             quest_reward()
+        elif option == "craft" or option == "cook":
+            crafting_recipe()
         elif option == "trade":
             trade_shop_loop()
         elif option == "shop":
@@ -841,6 +1147,8 @@ def main():
             add_item_loop()
         elif option == "link":
             link_loop()
+        elif option == "battle":
+            battle()
         elif option == "end":
             end = True
         elif option == "fix_dangerous":
