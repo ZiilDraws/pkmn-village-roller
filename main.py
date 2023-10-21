@@ -976,7 +976,7 @@ def battle():
                             log_addition(member_two_row, item, amount, "Autoadd Disabled")
                         print(f"*{amount} {item} has been added to your inventory.*")
                         break
-
+            print("\nRemember to update Win Streak role!")
 
 
 def quest_reward():
