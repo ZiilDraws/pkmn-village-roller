@@ -12,6 +12,7 @@ import clipboard
 from oauth2client.service_account import ServiceAccountCredentials
 from pyphonetics import Soundex
 from pokebase import move, type_
+from configsetup import update_config
 
 if getattr(sys, 'frozen', False):
     Current_Path = os.path.dirname(sys.executable)
@@ -165,6 +166,8 @@ def generate_tool_loot_message(name, amount, item, tool_id):
 def generate_loot_message(name, amount, item, loot_file_name):
     if amount == 1:
         amount = get_article(item)
+    if item == "money":
+        item = config.get("Settings", "currency_name")
     line = read_random_line(os.path.join("prompts", loot_file_name))
     replacements = {"name": name, "amount": amount, "item": item}
     edited_line = replace_placeholders(line, replacements)
@@ -1157,9 +1160,17 @@ def main():
             print(f"{option} is not a valid option")
     print("Good Bye!")
 
+try:
+    config = configparser.ConfigParser()
+    config.read('persistent/usersettings.ini', encoding="utf-16")
+except:
+    config = configparser.ConfigParser()
+    config.read('persistent/usersettings.ini', encoding="utf-8")
 
-config = configparser.ConfigParser()
-config.read('persistent/usersettings.ini')
+if not config.has_option("Version", "version") or config.get("Version", "version") != constants.USERSETTINGS_VERSION:
+    update_config('persistent/usersettings.ini')
+    config = configparser.ConfigParser()
+    config.read('persistent/usersettings.ini', encoding="utf-16")
 
 auto_add_to_inventory = config.getboolean('Settings', 'auto_add_to_inventory')
 auto_deny_updating_sheet = config.getboolean('Settings', 'auto_deny_updating_sheet')

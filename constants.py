@@ -1,5 +1,7 @@
 from datetime import datetime
 
+USERSETTINGS_VERSION = "v0.5.1"
+
 LOG_FILE_NAME = log_file_name = datetime.now().strftime("added_%H_%M_%d_%m_%Y.log")
 
 # Test Mastersheet https://docs.google.com/spreadsheets/d/1-ptD2YT_NjTY2AAi5yqBbDkcy7-Om54JHNoujwQVl2g/edit#gid=1947086225
