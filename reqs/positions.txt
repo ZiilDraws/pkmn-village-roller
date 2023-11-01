@@ -14,20 +14,11 @@ Basic Ticket, 0, C9
 Elemental Ticket, 0, C10
 Personalized Ticket, 0, C11
 Ticket Re-roll, 0, C12
-Legendary Ticket, 0, C14
-Prize Ticket, 0, C15
-Limitless Ticket, 0, C16
+Legendary Ticket, 0, C13
+Prize Ticket, 0, C14
+Limitless Ticket, 0, C15
+OOS Voucher, 0, C17
 Tour Extension, 0, C18
-Hybrid Wand, 0, C21
-Delta Wand, 0, C22
-Mutant Wand, 0, C23
-Shiny Wand, 0, C24
-Legendary Hybrid Wand, 0, C26
-Reset Wand, 0, C27
-Odd Wand, 0, C28
-Swap Wand, 0, C29
-Exchange Wand, 0, C30
-Experimental Wand, 0, C31
 Gender-Swap Stone, 0, F9
 Form-Change Stone, 0, F10
 Evolution Stone, 0, F11
@@ -53,154 +44,166 @@ Pansy Seeds, 0, I13
 Rose Seeds, 0, I14
 Tulip Seeds, 0, I15
 Windflower Seeds, 0, I16
-Apples, 0, I18
-Cherries, 0, I19
-Coconuts, 0, I20
-Peaches, 0, I21
-Pears, 0, I22
-Oranges, 0, I23
-Weeds, 0, I24
-Cosmos Seed, 0, I9
-Hyacinth Seed, 0, I10
-Lily Seed, 0, I11
-Mum Seed, 0, I12
-Pansy Seed, 0, I13
-Rose Seed, 0, I14
-Tulip Seed, 0, I15
-Windflower Seed, 0, I16
-Apple, 0, I18
-Cherry, 0, I19
-Coconut, 0, I20
-Peach, 0, I21
-Pear, 0, I22
-Orange, 0, I23
-Weed, 0, I24
-Manila Clam, 0, I25
-Gyroid Fragment, 0, I26
-Mulch, 0, I27
-Fish Bait, 0, I28
-Insect Bait, 0, I29
-Magic-Infused Stick, 0, I30
-Magic-Infused Stone, 0, I31
-Abomasite, 0, C34
-Absolite, 0, C35
-Aerodactylite, 0, C36
-Aggronite, 0, C37
-Alakazite, 0, C38
-Altarianite, 0, C39
-Ampharosite, 0, C40
-Audinite, 0, C41
-Banettite, 0, C42
-Beedrillite, 0, C43
-Blastoisinite, 0, C44
-Blazikenite, 0, C45
-Blue Orb, 0, C46
-Cameruptite, 0, C47
-Charizardite X, 0, C48
-Charizardite Y, 0, C49
-Diancite, 0, C50
-DNA Splicers, 0, C51
-Galladitite, 0, C52
-Garchompite, 0, C53
-Gardevoirite, 0, C54
-Gengarite, 0, C55
-Glalitite, 0, C56
-Green Orb, 0, C57
-Gyaradosite, 0, C58
-Heracronite, 0, C59
-Houndoominite, 0, C60
-Kangaskhanite, 0, C61
-Latiasite, 0, C62
-Latiosite, 0, C63
-Lopunnite, 0, C64
-Lucarionite, 0, C65
-Manectite, 0, C66
-Mawilite, 0, C67
-Medichamite, 0, C68
-Metagrossite, 0, C69
-Mewtwonite X, 0, C70
-Mewtwonite Y, 0, C71
-Pidgeotite, 0, C72
-Pinsirite, 0, C73
-Red Orb, 0, C74
-Sablenite, 0, C75
-Salamencite, 0, C76
-Sceptilite, 0, C77
-Scizorite, 0, C78
-Sharpedonite, 0, C79
-Slowbronite, 0, C80
-Steelixite, 0, C81
-Swampertite, 0, C82
-Tyranitarite, 0, C83
-Ultra Prism, 0, C84
-Venusaurite, 0, C85
-Alcremie Star, 0, F34
-Appletun Star, 0, F35
-Blastoise Star, 0, F36
-Butterfree Star, 0, F37
-Centiskorch Star, 0, F38
-Charizard Star, 0, F39
-Cinderace Star, 0, F40
-Coalossal Star, 0, F41
-Copperajah Star, 0, F42
-Corviknight Star, 0, F43
-Drednaw Star, 0, F44
-Duraludon Star, 0, F45
-Eevee Star, 0, F46
-Flapple Star, 0, F47
-Garbodor Star, 0, F48
-Gengar Star, 0, F49
-Grimmsnarl Star, 0, F50
-Hatterene Star, 0, F51
-Inteleon Star, 0, F52
-Kingler Star, 0, F53
-Lapras Star, 0, F54
-Machamp Star, 0, F55
-Melmetal Star, 0, F56
-Meowth Star, 0, F57
-Orbeetle Star, 0, F58
-Pikachu Star, 0, F59
-Rillaboom Star, 0, F60
-Sandaconda Star, 0, F61
-Snorlax Star, 0, F62
-Toxtricity Star, 0, F63
-Urshifu Star, 0, F64
-Venusaur Star, 0, F65
-Aloraichium Z, 0, I34
-Buginium Z, 0, I35
-Darkinium Z, 0, I36
-Decidium Z, 0, I37
-Dragonium Z, 0, I38
-Eevium Z, 0, I39
-Electrium Z, 0, I40
-Fairium Z, 0, I41
-Fightinium Z, 0, I42
-Firium Z, 0, I43
-Flyinium Z, 0, I44
-Ghostium Z, 0, I45
-Grassium Z, 0, I46
-Groundium Z, 0, I47
-Icium Z, 0, I48
-Incinium Z, 0, I49
-Kommonium Z, 0, I50
-Lunalium Z, 0, I51
-Lycanium Z, 0, I52
-Marshadium Z, 0, I53
-Mewnium Z, 0, I54
-Mimikium Z, 0, I55
-Normalium Z, 0, I56
-Pikanium Z, 0, I57
-Pikashunium Z, 0, I58
-Poisonium Z, 0, I59
-Primarium Z, 0, I60
-Psychium Z, 0, I61
-Rockium Z, 0, I62
-Snorlium Z, 0, I63
-Solganium Z, 0, I64
-Steelium Z, 0, I65
-Tapunium Z, 0, I66
-Ultranecrozium Z, 0, I67
-Waterium Z, 0, I68
+Carrot Start, 0, I18
+Potato Start, 0, I19
+Pumpkin Start, 0, I20
+Tomato Start, 0, I21
+Apples, 0, I23
+Cherries, 0, I24
+Coconuts, 0, I25
+Peaches, 0, I26
+Pears, 0, I27
+Oranges, 0, I28
+Weeds, 0, I30
+Manilla Clam, 0, I31
+Gyroid Fragment, 0, I32
+Mulch, 0, I33
+Fish Bait, 0, I34
+Insect Bait, 0, I35
+Magic-Infused Stick, 0, I36
+Magic-Infused Stone, 0, I37
+Hybrid Wand, 0, C21
+Delta Wand, 0, C22
+Mutant Wand, 0, C23
+Shiny Wand, 0, C24
+Legendary Hybrid Wand, 0, C25
+Reset Wand, 0, C26
+Odd Wand, 0, C27
+Swap Wand, 0, C28
+Exchange Wand, 0, C29
+Experimental Wand, 0, C30
+Carrots, 0, F33
+Potatoes, 0, F34
+Pumpkins, 0, F35
+Tomatoes, 0, F36
+Mushrooms, 0, F37
+Flour, 0, F38
+Sugar, 0, F39
+Bug Badges, 0, C33
+Fish Badges, 0, C34
+Fossil Badges, 0, C35
+Flower Badges, 0, C36
+Gyroid Badges, 0, C37
+Cooking Badges, 0, C38
+Abomasite, 0, C42
+Absolite, 0, C43
+Aerodactylite, 0, C44
+Aggronite, 0, C45
+Alakazite, 0, C46
+Altarianite, 0, C47
+Ampharosite, 0, C48
+Audinite, 0, C49
+Banettite, 0, C50
+Beedrillite, 0, C51
+Blastoisinite, 0, C52
+Blazikenite, 0, C53
+Blue Orb, 0, C54
+Cameruptite, 0, C55
+Charizardite X, 0, C56
+Charizardite Y, 0, C57
+Diancite, 0, C58
+DNA Splicers, 0, C59
+Galladitite, 0, C60
+Garchompite, 0, C61
+Gardevoirite, 0, C62
+Gengarite, 0, C63
+Glalitite, 0, C64
+Green Orb, 0, C65
+Gyaradosite, 0, C66
+Heracronite, 0, C67
+Houndoominite, 0, C68
+Kangaskhanite, 0, C69
+Latiasite, 0, C70
+Latiosite, 0, C71
+Lopunnite, 0, C72
+Lucarionite, 0, C73
+Manectite, 0, C74
+Mawilite, 0, C75
+Medichamite, 0, C76
+Metagrossite, 0, C77
+Mewtwonite X, 0, C78
+Mewtwonite Y, 0, C79
+Pidgeotite, 0, C80
+Pinsirite, 0, C81
+Red Orb, 0, C82
+Sablenite, 0, C83
+Salamencite, 0, C84
+Sceptilite, 0, C85
+Scizorite, 0, C86
+Sharpedonite, 0, C87
+Slowbronite, 0, C88
+Steelixite, 0, C89
+Swampertite, 0, C90
+Tyranitarite, 0, C91
+Ultra Prism, 0, C92
+Venusaurite, 0, C93
+Alcremie Star, 0, F42
+Appletun Star, 0, F43
+Blastoise Star, 0, F44
+Butterfree Star, 0, F45
+Centiskorch Star, 0, F46
+Charizard Star, 0, F47
+Cinderace Star, 0, F48
+Coalossal Star, 0, F49
+Copperajah Star, 0, F50
+Corviknight Star, 0, F51
+Drednaw Star, 0, F52
+Duraludon Star, 0, F53
+Eevee Star, 0, F54
+Flapple Star, 0, F55
+Garbodor Star, 0, F56
+Gengar Star, 0, F57
+Grimmsnarl Star, 0, F58
+Hatterene Star, 0, F59
+Inteleon Star, 0, F60
+Kingler Star, 0, F61
+Lapras Star, 0, F62
+Machamp Star, 0, F63
+Melmetal Star, 0, F64
+Meowth Star, 0, F65
+Orbeetle Star, 0, F66
+Pikachu Star, 0, F67
+Rillaboom Star, 0, F68
+Sandaconda Star, 0, F69
+Snorlax Star, 0, F70
+Toxtricity Star, 0, F71
+Urshifu Star, 0, F72
+Venusaur Star, 0, F73
+Aloraichium Z, 0, I42
+Buginium Z, 0, I43
+Darkinium Z, 0, I44
+Decidium Z, 0, I45
+Dragonium Z, 0, I46
+Eevium Z, 0, I47
+Electrium Z, 0, I48
+Fairium Z, 0, I49
+Fightinium Z, 0, I50
+Firium Z, 0, I51
+Flyinium Z, 0, I52
+Ghostium Z, 0, I53
+Grassium Z, 0, I54
+Groundium Z, 0, I55
+Icium Z, 0, I56
+Incinium Z, 0, I57
+Kommonium Z, 0, I58
+Lunalium Z, 0, I59
+Lycanium Z, 0, I60
+Marshadium Z, 0, I61
+Mewnium Z, 0, I62
+Mimikium Z, 0, I63
+Normalium Z, 0, I64
+Pikanium Z, 0, I65
+Pikashunium Z, 0, I66
+Poisonium Z, 0, I67
+Primarium Z, 0, I68
+Psychium Z, 0, I69
+Rockium Z, 0, I70
+Snorlium Z, 0, I71
+Solganium Z, 0, I72
+Steelium Z, 0, I73
+Tapunium Z, 0, I74
+Ultranecrozium Z, 0, I75
+Waterium Z, 0, I76
 Agrias Butterfly, 2, C9
 Ant, 2, C10
 Atlas Moth, 2, C11
@@ -521,3 +524,35 @@ Wallopoid, 2, O41
 Whirroid, 2, O42
 Whistloid, 2, O43
 Xylophoid, 2, O44
+Apple Tart, 2, R9
+Baked Potatoes, 2, R10
+Bread, 2, R11
+Carrot Cake, 2, R12
+Champiñones Al Ajillo, 2, R13
+Cherry Tart, 2, R14
+Clam Chowder, 2, R15
+Coconut Pudding, 2, R16
+Cupcakes, 2, R17
+French Fries, 2, R18
+Frosted Pretzels, 2, R19
+Fruit Salad, 2, R20
+Fruit-Topped Pancakes, 2, R21
+Gnocchi Di Patate, 2, R22
+Gratin, 2, R23
+Minestrone Soup, 2, R24
+Mushroom Crepe, 2, R25
+Mushroom Pizza, 2, R26
+Mushroom Salad, 2, R27
+Orange Tart, 2, R28
+Peach Tart, 2, R29
+Pear Tart, 2, R30
+Pickled Veggies, 2, R31
+Pizza, 2, R32
+Pumpkin Curry, 2, R33
+Pumpkin Pie, 2, R34
+Salad, 2, R35
+Spaghetti, 2, R36
+Thumbprint Jam Cookies, 2, R37
+Tomato Curry, 2, R38
+Tomato Puree, 2, R39
+Veggie Quiche, 2, R40
