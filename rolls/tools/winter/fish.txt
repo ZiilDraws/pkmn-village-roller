@@ -1,4 +1,4 @@
-Oops, nothing is biting. :(^8
+none^8
 Bitterling
 Pale Chub
 Crucian Carp
@@ -31,7 +31,7 @@ Oarfish
 Barreleye ^0.1
 Coelacanth ^0.1
 
-Oops, nothing is biting. :(^4
+none^4
 Bitterling
 Pale Chub
 Crucian Carp

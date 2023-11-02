@@ -1,4 +1,4 @@
-Oops, you scared it away. :(^8
+none^8
 Common Butterfly ^5
 Paper Kite Butterfly
 Emperor Butterfly
@@ -21,7 +21,7 @@ Centipede ^0.1
 Spider ^0.2
 Tarantula ^0.5
 
-Oops, you scared it away. :(^4
+none^4
 Common Butterfly ^2
 Paper Kite Butterfly
 Emperor Butterfly

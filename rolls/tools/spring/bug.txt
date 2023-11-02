@@ -1,4 +1,4 @@
-Oops, you missed! ^8
+none^8
 Common Butterfly ^5
 Yellow Butterfly ^5
 Tiger Butterfly
@@ -36,7 +36,7 @@ Centipede ^0.1
 Spider ^0.2
 Tarantula ^0.5
 
-Oops, you missed!^4
+none^4
 Common Butterfly ^2
 Yellow Butterfly ^2
 Tiger Butterfly

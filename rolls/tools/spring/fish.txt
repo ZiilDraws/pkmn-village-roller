@@ -1,4 +1,4 @@
-Oops, nothing is biting. :(^8
+none^8
 Pale Chub
 Crucian Carp
 Dace
@@ -39,7 +39,7 @@ Oarfish ^0.2
 Barreleye ^0.1
 Coelacanth ^0.1
 
-Oops, nothing is biting. :(^4
+none^4
 Pale Chub
 Crucian Carp
 Dace
