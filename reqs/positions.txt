@@ -55,6 +55,7 @@ Peaches, 0, I26
 Pears, 0, I27
 Oranges, 0, I28
 Weeds, 0, I30
+Manila Clam, 0, I31
 Manilla Clam, 0, I31
 Gyroid Fragment, 0, I32
 Mulch, 0, I33

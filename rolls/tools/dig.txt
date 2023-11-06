@@ -1,5 +1,7 @@
 none^5
 Fossil ^2
+Mushroom
+Potato
 Gyroid Fragment
 Gender-Swap Stone
 Form-Change Stone
@@ -27,6 +29,8 @@ Gender-Swap Stone
 Form-Change Stone
 Evolution Stone
 Devolution Pebble
+Mushroom
+Potato
 x3 Weeds
 x2 Weeds
 x1 Weed
@@ -55,6 +59,8 @@ Evolution Stone
 Devolution Pebble
 x3 Weeds ^0.8
 x3 Manila Clam ^0.8
+Mushroom
+Potato
 Ant
 Mole Cricket
 Hermit Crab
