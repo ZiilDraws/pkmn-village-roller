@@ -75,8 +75,10 @@ Exchange Wand, 0, C29
 Experimental Wand, 0, C30
 Carrots, 0, F33
 Potatoes, 0, F34
+Potato, 0, F34
 Pumpkins, 0, F35
 Tomatoes, 0, F36
+Tomato, 0, F36
 Mushrooms, 0, F37
 Flour, 0, F38
 Sugar, 0, F39
