@@ -24,7 +24,7 @@ Mutant Berry
 Clutch Re-roll
 Clutch Forecast^0.5
 Substitute Doll^0.5
-x3 Cosmo Seeds
+x3 Cosmos Seeds
 x3 Hyacinth Seeds
 x3 Lily Seeds
 x3 Mum Seeds
@@ -77,7 +77,7 @@ Mutant Berry
 Clutch Re-roll
 Clutch Forecast^0.8
 Substitute Doll^0.8
-x3 Cosmo Seeds
+x3 Cosmos Seeds
 x3 Hyacinth Seeds
 x3 Lily Seeds
 x3 Mum Seeds
@@ -131,7 +131,7 @@ Substitute Doll
 Megastone
 Z Crystal
 GMax Star
-x3 Cosmo Seed^0.3
+x3 Cosmos Seed^0.3
 x3 Hyacinth Seed^0.3
 x3 Lily Seed^0.3
 x3 Mum Seed^0.3

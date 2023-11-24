@@ -3,7 +3,7 @@ Ticket Re-roll
 Tour Extension
 Gender-Swap Stone
 Devolution Pebble
-x3 Cosmo Seed^0.3
+x3 Cosmos Seed^0.3
 x3 Hyacinth Seed^0.3
 x3 Lily Seed^0.3
 x3 Mum Seed^0.3
