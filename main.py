@@ -1113,6 +1113,7 @@ def fix_misspelling_in_sheet():
 
 
 def main():
+    print(f"Welcome to VillageRoller {constants.USERSETTINGS_VERSION}!")
     end = False
     while not end:
         option = input("""What do you wish to do? 
