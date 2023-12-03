@@ -1,6 +1,6 @@
 from datetime import datetime
 
-USERSETTINGS_VERSION = "v0.5.1"
+USERSETTINGS_VERSION = "v0.5.4"
 
 LOG_FILE_NAME = log_file_name = datetime.now().strftime("added_%H_%M_%d_%m_%Y.log")
 
